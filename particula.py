@@ -13,3 +13,13 @@ class Particula:
         self.__blue = blue
         self.__distancia = distancia_euclideana(origen_x, origen_y, destino_x, destino_y)
 		
+    def __str__(self):
+        return(
+            "Identificador: " + self.__id + "\n" +
+            "Origen X: " + self.__origen_x + "\n" +
+            "Origen Y: " + self.__origen_y + "\n" +
+            "Destino X: " + self.__destino_x + "\n" +
+            "Destino Y: " + self.__destino_y + "\n" +
+            "Velocidad: " + self.__velocidad + "\n" +
+            "Distancia: " + str(self.__distancia) + "\n"
+        )
