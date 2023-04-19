@@ -4,6 +4,8 @@ from PySide2.QtGui import *
 from ui_mainwindow import Ui_Dialog
 from cumulo import Cumulo
 from particula import Particula
+from random import randint
+import math
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -20,7 +22,21 @@ class MainWindow(QMainWindow):
 
     @Slot()
     def click_agregar(self):
-        print("limpiar")
+        id = randint(0, 9999)
+        origenX = randint(0, 50)
+        origenY = randint(0, 50)
+        destinoX = self.ui.DestinoX_SpinBox.value()
+        destinoY = self.ui.DestinoY_SpinBox.value()
+        velocidad = self.ui.Valocidad_SpinBox.value()
+        red = self.ui.Red_SpinBox.value()
+        green = self.ui.Green_SpinBox.value()
+        blue = self.ui.Blue_SpinBox.value()
+        distancia = math.sqrt((destinoX - origenX)^2 + (destinoY - origenY)^2)
+
+        particula = Particula(id, origenX, origenY, destinoX, destinoY, velocidad, red, green, blue, distancia)
+        self.cumulo.agregar_final(particula)
+
+
     
     @Slot()
     def click_agregar_inicio(self):
