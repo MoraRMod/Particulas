@@ -31,7 +31,7 @@
       <property name="title">
        <string>Datos</string>
       </property>
-      <widget class="QSpinBox" name="spinBox_6">
+      <widget class="QSpinBox" name="Blue_SpinBox">
        <property name="geometry">
         <rect>
          <x>20</x>
@@ -57,7 +57,7 @@
         <string>Green</string>
        </property>
       </widget>
-      <widget class="QSpinBox" name="spinBox_4">
+      <widget class="QSpinBox" name="Red_SpinBox">
        <property name="geometry">
         <rect>
          <x>20</x>
@@ -70,7 +70,7 @@
         <number>255</number>
        </property>
       </widget>
-      <widget class="QSpinBox" name="spinBox_2">
+      <widget class="QSpinBox" name="DestinoY_SpinBox">
        <property name="geometry">
         <rect>
          <x>20</x>
@@ -96,7 +96,7 @@
         <string>Red</string>
        </property>
       </widget>
-      <widget class="QSpinBox" name="spinBox">
+      <widget class="QSpinBox" name="DestinoX_SpinBox">
        <property name="geometry">
         <rect>
          <x>21</x>
@@ -135,7 +135,7 @@
         <string>Destino Y</string>
        </property>
       </widget>
-      <widget class="QSpinBox" name="spinBox_5">
+      <widget class="QSpinBox" name="Green_SpinBox">
        <property name="geometry">
         <rect>
          <x>20</x>
@@ -174,7 +174,7 @@
         <string>Destino X</string>
        </property>
       </widget>
-      <widget class="QSpinBox" name="spinBox_3">
+      <widget class="QSpinBox" name="Valocidad_SpinBox">
        <property name="geometry">
         <rect>
          <x>20</x>
