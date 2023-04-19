@@ -105,8 +105,8 @@ class Ui_Dialog(object):
         self.DestinoY_Label.setText(QCoreApplication.translate("Dialog", u"Destino Y", None))
         self.Velocidad_Label.setText(QCoreApplication.translate("Dialog", u"Velocidad", None))
         self.DestinoX_Label.setText(QCoreApplication.translate("Dialog", u"Destino X", None))
-        self.AgregarInicio_PushButton.setText(QCoreApplication.translate("Dialog", u"Agregar Inicio", None))
-        self.AgregarFinal_PushButton.setText(QCoreApplication.translate("Dialog", u"Agregar Final", None))
+        self.AgregarInicio_PushButton.setText(QCoreApplication.translate("Dialog", u"Agregar Final", None))
+        self.AgregarFinal_PushButton.setText(QCoreApplication.translate("Dialog", u"Agregar Inicio", None))
         self.Mostrar_PushButon.setText(QCoreApplication.translate("Dialog", u"Mostrar", None))
     # retranslateUi
 
