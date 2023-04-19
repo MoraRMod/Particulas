@@ -8,18 +8,25 @@ from particula import Particula
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
+
+        self.cumulo = Cumulo()
         
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
 
-        self.ui.AgregarInicio_PushButton.clicked.connect(self.dibujar)
-        self.ui.AgregarFinal_PushButton.clicked.connect(self.limpiar)
+        self.ui.AgregarInicio_PushButton.clicked.connect(self.click_agregar)
+        self.ui.AgregarFinal_PushButton.clicked.connect(self.click_agregar_inicio)
         self.ui.Mostrar_PushButon.clicked.connect(self.click_mostrar)
 
     @Slot()
-    def dibujar(self):
-        print("dibujar")
+    def click_agregar(self):
+        print("limpiar")
     
     @Slot()
-    def limpiar(self):
+    def click_agregar_inicio(self):
         print("limpiar")
+
+    @Slot()
+    def click_mostrar(self):
+        self.ui.Contenido_PlainTextEdit.clear()
+        self.ui.Contenido_PlainTextEdit.insertPlainText(str(self.cumulo))
