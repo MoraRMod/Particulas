@@ -69,10 +69,10 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.Datos_GroupBox, 0, 0, 2, 1)
 
-        self.Contenido_GraphicsView = QGraphicsView(self.Particulas_GroupBox)
-        self.Contenido_GraphicsView.setObjectName(u"Contenido_GraphicsView")
+        self.Contenido_PlainTextEdit = QPlainTextEdit(self.Particulas_GroupBox)
+        self.Contenido_PlainTextEdit.setObjectName(u"Contenido_PlainTextEdit")
 
-        self.gridLayout.addWidget(self.Contenido_GraphicsView, 0, 1, 1, 3)
+        self.gridLayout.addWidget(self.Contenido_PlainTextEdit, 0, 1, 1, 3)
 
         self.AgregarInicio_PushButton = QPushButton(self.Particulas_GroupBox)
         self.AgregarInicio_PushButton.setObjectName(u"AgregarInicio_PushButton")
