@@ -15,11 +15,11 @@ class Particula:
 		
     def __str__(self):
         return(
-            "Identificador: " + self.__id + "\n" +
-            "Origen X: " + self.__origen_x + "\n" +
-            "Origen Y: " + self.__origen_y + "\n" +
-            "Destino X: " + self.__destino_x + "\n" +
-            "Destino Y: " + self.__destino_y + "\n" +
-            "Velocidad: " + self.__velocidad + "\n" +
+            "Identificador: " + str(self.__id) + "\n" +
+            "Origen X: " + str(self.__origen_x) + "\n" +
+            "Origen Y: " + str(self.__origen_y) + "\n" +
+            "Destino X: " + str(self.__destino_x) + "\n" +
+            "Destino Y: " + str(self.__destino_y )+ "\n" +
+            "Velocidad: " + str(self.__velocidad) + "\n" +
             "Distancia: " + str(self.__distancia) + "\n"
         )
