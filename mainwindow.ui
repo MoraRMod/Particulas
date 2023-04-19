@@ -187,7 +187,7 @@
      </widget>
     </item>
     <item row="0" column="1" colspan="3">
-     <widget class="QGraphicsView" name="Contenido_GraphicsView"/>
+     <widget class="QPlainTextEdit" name="Contenido_PlainTextEdit"/>
     </item>
     <item row="1" column="1">
      <widget class="QPushButton" name="AgregarInicio_PushButton">
