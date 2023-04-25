@@ -20,6 +20,31 @@ class MainWindow(QMainWindow):
         self.ui.AgregarFinal_PushButton.clicked.connect(self.click_agregar_inicio)
         self.ui.Mostrar_PushButon.clicked.connect(self.click_mostrar)
 
+        self.ui.actionAbrir_2.triggered.connect(self.action_Abrir_Archivo)
+        self.ui.actionGuardar_3.triggered.connect(self.action_Guardar_Archivo)
+
+    @Slot()
+    def action_Abrir_Archivo(self):
+        ubicacion = QFileDialog.getSaveFileName(
+            self,
+            'Abrir Archivo',
+            '.',
+            'JSON (*.json)'
+        )[0]
+
+        if self.aeropuerto.abrir(ubicacion):
+            QMessageBox.information(
+                self,
+                "Exito",
+                "Se pudo abrir el archivo." + ubicacion
+            )
+        else:
+            QMessageBox.information(
+                self,
+                "Error",
+                "No se pudo abrir el archivo." + ubicacion
+            )
+            
     @Slot()
     def click_agregar(self):
         id = randint(0, 9999)
