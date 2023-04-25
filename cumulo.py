@@ -31,7 +31,7 @@ class Cumulo:
                 self.__cumulos = [Particula(**particula) for particula in lista]
         except:
             return 0
-        
+    
     def guardar(self, ubicacion):
         try:
             with open(ubicacion, 'w') as archivo:
