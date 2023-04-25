@@ -44,7 +44,31 @@ class MainWindow(QMainWindow):
                 "Error",
                 "No se pudo abrir el archivo." + ubicacion
             )
-            
+
+    @Slot()
+    def action_Guardar_Archivo(self):
+        ubicacion = QFileDialog.getSaveFileName(
+            self,
+            'Guardar Archivo',
+            '.',
+            'JSON (*.json)'
+        )[0]
+
+        print(ubicacion)
+
+        if self.aeropuerto.guardar(ubicacion):
+            QMessageBox.information(
+                self,
+                "Exito",
+                "Se pudo crear el archivo." + ubicacion
+            )
+        else:
+            QMessageBox.information(
+                self,
+                "Error",
+                "No se pudo crear el archivo." + ubicacion
+            )
+    
     @Slot()
     def click_agregar(self):
         id = randint(0, 9999)
