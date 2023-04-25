@@ -20,8 +20,8 @@ class MainWindow(QMainWindow):
         self.ui.AgregarFinal_PushButton.clicked.connect(self.click_agregar_inicio)
         self.ui.Mostrar_PushButon.clicked.connect(self.click_mostrar)
 
-        self.ui.actionAbrir_2.triggered.connect(self.action_Abrir_Archivo)
-        self.ui.actionGuardar_3.triggered.connect(self.action_Guardar_Archivo)
+        self.ui.actionAbrir.triggered.connect(self.action_Abrir_Archivo)
+        self.ui.actionGuardar.triggered.connect(self.action_Guardar_Archivo)
 
     @Slot()
     def action_Abrir_Archivo(self):
