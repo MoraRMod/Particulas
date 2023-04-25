@@ -1,7 +1,7 @@
 from PySide2.QtWidgets import *
 from PySide2.QtCore import Slot
 from PySide2.QtGui import *
-from ui_mainwindow import Ui_Dialog
+from ui_mainwindow import Ui_MainWindow
 from cumulo import Cumulo
 from particula import Particula
 from random import randint
@@ -13,7 +13,7 @@ class MainWindow(QMainWindow):
 
         self.cumulo = Cumulo()
         
-        self.ui = Ui_Dialog()
+        self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
         self.ui.AgregarInicio_PushButton.clicked.connect(self.click_agregar)
@@ -32,7 +32,7 @@ class MainWindow(QMainWindow):
             'JSON (*.json)'
         )[0]
 
-        if self.aeropuerto.abrir(ubicacion):
+        if self.cumulo.abrir(ubicacion):
             QMessageBox.information(
                 self,
                 "Exito",
@@ -56,7 +56,7 @@ class MainWindow(QMainWindow):
 
         print(ubicacion)
 
-        if self.aeropuerto.guardar(ubicacion):
+        if self.cumulo.guardar(ubicacion):
             QMessageBox.information(
                 self,
                 "Exito",
@@ -76,7 +76,7 @@ class MainWindow(QMainWindow):
         origenY = randint(0, 50)
         destinoX = self.ui.DestinoX_SpinBox.value()
         destinoY = self.ui.DestinoY_SpinBox.value()
-        velocidad = self.ui.Valocidad_SpinBox.value()
+        velocidad = self.ui.Velocidad_SpinBox.value()
         red = self.ui.Red_SpinBox.value()
         green = self.ui.Green_SpinBox.value()
         blue = self.ui.Blue_SpinBox.value()
@@ -84,8 +84,6 @@ class MainWindow(QMainWindow):
 
         particula = Particula(id, origenX, origenY, destinoX, destinoY, velocidad, red, green, blue, distancia)
         self.cumulo.agregar_final(particula)
-
-
     
     @Slot()
     def click_agregar_inicio(self):
@@ -94,7 +92,7 @@ class MainWindow(QMainWindow):
         origenY = randint(0, 50)
         destinoX = self.ui.DestinoX_SpinBox.value()
         destinoY = self.ui.DestinoY_SpinBox.value()
-        velocidad = self.ui.Valocidad_SpinBox.value()
+        velocidad = self.ui.Velocidad_SpinBox.value()
         red = self.ui.Red_SpinBox.value()
         green = self.ui.Green_SpinBox.value()
         blue = self.ui.Blue_SpinBox.value()
