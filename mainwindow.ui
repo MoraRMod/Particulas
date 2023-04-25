@@ -1,234 +1,242 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>709</width>
-    <height>499</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>MainWindow</string>
   </property>
-  <widget class="QGroupBox" name="Particulas_GroupBox">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>711</width>
-     <height>501</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>Particulas</string>
-   </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0" rowspan="2">
-     <widget class="QGroupBox" name="Datos_GroupBox">
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="0" column="0">
+     <widget class="QGroupBox" name="Particulas_GroupBox">
       <property name="title">
-       <string>Datos</string>
+       <string>Particulas</string>
       </property>
-      <widget class="QSpinBox" name="Blue_SpinBox">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>290</y>
-         <width>51</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <number>255</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="Green_Label">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>220</y>
-         <width>51</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Green</string>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="Red_SpinBox">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>190</y>
-         <width>51</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <number>255</number>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="DestinoY_SpinBox">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>90</y>
-         <width>51</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <number>500</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="Red_Label">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>170</y>
-         <width>51</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Red</string>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="DestinoX_SpinBox">
-       <property name="geometry">
-        <rect>
-         <x>21</x>
-         <y>40</y>
-         <width>51</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <number>500</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="Blue_Label">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>270</y>
-         <width>51</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Blue</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="DestinoY_Label">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>70</y>
-         <width>51</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Destino Y</string>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="Green_SpinBox">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>240</y>
-         <width>51</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <number>255</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="Velocidad_Label">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>120</y>
-         <width>51</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Velocidad</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="DestinoX_Label">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>51</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Destino X</string>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="Valocidad_SpinBox">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>140</y>
-         <width>51</width>
-         <height>22</height>
-        </rect>
-       </property>
-      </widget>
-     </widget>
-    </item>
-    <item row="0" column="1" colspan="3">
-     <widget class="QPlainTextEdit" name="Contenido_PlainTextEdit"/>
-    </item>
-    <item row="1" column="1">
-     <widget class="QPushButton" name="AgregarInicio_PushButton">
-      <property name="text">
-       <string>Agregar Inicio</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2">
-     <widget class="QPushButton" name="AgregarFinal_PushButton">
-      <property name="text">
-       <string>Agregar Final</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="3">
-     <widget class="QPushButton" name="Mostrar_PushButon">
-      <property name="text">
-       <string>Mostrar</string>
-      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0" rowspan="2">
+        <widget class="QGroupBox" name="Datos_GroupBox">
+         <property name="title">
+          <string>Datos</string>
+         </property>
+         <widget class="QSpinBox" name="Blue_SpinBox">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>290</y>
+            <width>51</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <property name="maximum">
+           <number>255</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Green_Label">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>220</y>
+            <width>51</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Green</string>
+          </property>
+         </widget>
+         <widget class="QSpinBox" name="Red_SpinBox">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>190</y>
+            <width>51</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <property name="maximum">
+           <number>255</number>
+          </property>
+         </widget>
+         <widget class="QSpinBox" name="DestinoY_SpinBox">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>90</y>
+            <width>51</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <property name="maximum">
+           <number>500</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Red_Label">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>170</y>
+            <width>51</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Red</string>
+          </property>
+         </widget>
+         <widget class="QSpinBox" name="DestinoX_SpinBox">
+          <property name="geometry">
+           <rect>
+            <x>21</x>
+            <y>40</y>
+            <width>51</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="maximum">
+           <number>500</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Blue_Label">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>270</y>
+            <width>51</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Blue</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="DestinoY_Label">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>70</y>
+            <width>51</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Destino Y</string>
+          </property>
+         </widget>
+         <widget class="QSpinBox" name="Green_SpinBox">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>240</y>
+            <width>51</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <property name="maximum">
+           <number>255</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Velocidad_Label">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>120</y>
+            <width>51</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Velocidad</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="DestinoX_Label">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>51</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Destino X</string>
+          </property>
+         </widget>
+         <widget class="QSpinBox" name="Velocidad_SpinBox">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>140</y>
+            <width>51</width>
+            <height>22</height>
+           </rect>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="3">
+        <widget class="QPlainTextEdit" name="Contenido_PlainTextEdit"/>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="AgregarInicio_PushButton">
+         <property name="text">
+          <string>Agregar Inicio</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QPushButton" name="AgregarFinal_PushButton">
+         <property name="text">
+          <string>Agregar Final</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QPushButton" name="Mostrar_PushButon">
+         <property name="text">
+          <string>Mostrar</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </item>
    </layout>
   </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuArchivo">
+    <property name="title">
+     <string>Archivo</string>
+    </property>
+    <addaction name="actionAbrir"/>
+    <addaction name="actionGuardar"/>
+   </widget>
+   <addaction name="menuArchivo"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
   <action name="actionAbrir">
    <property name="text">
     <string>Abrir</string>
    </property>
-   <property name="shortcut">
-    <string>Ctrl+A</string>
-   </property>
   </action>
   <action name="actionGuardar">
-   <property name="checkable">
-    <bool>false</bool>
-   </property>
    <property name="text">
     <string>Guardar</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+G</string>
    </property>
   </action>
  </widget>
