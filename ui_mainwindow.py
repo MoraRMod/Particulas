@@ -18,6 +18,11 @@ class Ui_Dialog(object):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
         Dialog.resize(709, 499)
+        self.actionAbrir = QAction(Dialog)
+        self.actionAbrir.setObjectName(u"actionAbrir")
+        self.actionGuardar = QAction(Dialog)
+        self.actionGuardar.setObjectName(u"actionGuardar")
+        self.actionGuardar.setCheckable(False)
         self.Particulas_GroupBox = QGroupBox(Dialog)
         self.Particulas_GroupBox.setObjectName(u"Particulas_GroupBox")
         self.Particulas_GroupBox.setGeometry(QRect(0, 0, 711, 501))
@@ -97,6 +102,14 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
+        self.actionAbrir.setText(QCoreApplication.translate("Dialog", u"Abrir", None))
+#if QT_CONFIG(shortcut)
+        self.actionAbrir.setShortcut(QCoreApplication.translate("Dialog", u"Ctrl+A", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionGuardar.setText(QCoreApplication.translate("Dialog", u"Guardar", None))
+#if QT_CONFIG(shortcut)
+        self.actionGuardar.setShortcut(QCoreApplication.translate("Dialog", u"Ctrl+G", None))
+#endif // QT_CONFIG(shortcut)
         self.Particulas_GroupBox.setTitle(QCoreApplication.translate("Dialog", u"Particulas", None))
         self.Datos_GroupBox.setTitle(QCoreApplication.translate("Dialog", u"Datos", None))
         self.Green_Label.setText(QCoreApplication.translate("Dialog", u"Green", None))
@@ -105,8 +118,8 @@ class Ui_Dialog(object):
         self.DestinoY_Label.setText(QCoreApplication.translate("Dialog", u"Destino Y", None))
         self.Velocidad_Label.setText(QCoreApplication.translate("Dialog", u"Velocidad", None))
         self.DestinoX_Label.setText(QCoreApplication.translate("Dialog", u"Destino X", None))
-        self.AgregarInicio_PushButton.setText(QCoreApplication.translate("Dialog", u"Agregar Final", None))
-        self.AgregarFinal_PushButton.setText(QCoreApplication.translate("Dialog", u"Agregar Inicio", None))
+        self.AgregarInicio_PushButton.setText(QCoreApplication.translate("Dialog", u"Agregar Inicio", None))
+        self.AgregarFinal_PushButton.setText(QCoreApplication.translate("Dialog", u"Agregar Final", None))
         self.Mostrar_PushButon.setText(QCoreApplication.translate("Dialog", u"Mostrar", None))
     # retranslateUi
 
