@@ -11,7 +11,7 @@ class Cumulo:
     
     def agregar_inicio(self, particula:Particula):
         print('Se agrega al inicio.')
-        self.__cumulos.insert(0,particula)
+        self.__cumulos.insert(0, particula)
         
 
     def mostrar(self):
@@ -40,6 +40,8 @@ class Cumulo:
                 print(lista)
 
                 json.dump(lista, archivo, indent = 4)
+
+                return 1
         except:
             return 0
     
