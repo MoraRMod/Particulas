@@ -22,8 +22,9 @@ class MainWindow(QMainWindow):
 
         self.ui.actionAbrir.triggered.connect(self.action_Abrir_Archivo)
         self.ui.actionGuardar.triggered.connect(self.action_Guardar_Archivo)
-        self.ui.MostrarTabla_PushButton.clicked.connect(self.mostrar_tabla)
+
         self.ui.Buscar_PushButton.clicked.connect(self.buscar_id)
+        self.ui.MostrarTabla_PushButton.clicked.connect(self.mostrar_tabla)
 
     @Slot()
     def buscar_id(self):
@@ -32,7 +33,7 @@ class MainWindow(QMainWindow):
         encontrado = False
 
         for particula in self.cumulo:
-            if id == particula.id:
+            if id == str(particula.id):
                 self.ui.Tablita_TableWidget.clear()
                 self.ui.Tablita_TableWidget.setRowCount(1)
 
