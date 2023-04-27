@@ -23,6 +23,26 @@ class Cumulo:
             str(c) + "\n" for c in self.__cumulos
         )
     
+    def __len__(self):
+        return(
+            len(self.__cumulos)
+        )
+    
+    def __iter__(self):
+        self.cont = 0
+
+        return self
+    
+    def __next__(self):
+        if self.cont < len(self.__cumulos):
+            quark = self.__cumulos[self.cont]
+
+            self.cont += 1
+
+            return quark
+        else:
+            raise StopIteration
+    
     def abrir(self, ubicacion):
         try:
             with open(ubicacion, 'r') as archivo:
