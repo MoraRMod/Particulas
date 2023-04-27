@@ -26,7 +26,13 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout_3 = QGridLayout(self.centralwidget)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.Particulas_GroupBox = QGroupBox(self.centralwidget)
+        self.tabWidget = QTabWidget(self.centralwidget)
+        self.tabWidget.setObjectName(u"tabWidget")
+        self.tab = QWidget()
+        self.tab.setObjectName(u"tab")
+        self.gridLayout = QGridLayout(self.tab)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.Particulas_GroupBox = QGroupBox(self.tab)
         self.Particulas_GroupBox.setObjectName(u"Particulas_GroupBox")
         self.gridLayout_2 = QGridLayout(self.Particulas_GroupBox)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
@@ -97,7 +103,36 @@ class Ui_MainWindow(object):
         self.gridLayout_2.addWidget(self.Mostrar_PushButon, 1, 3, 1, 1)
 
 
-        self.gridLayout_3.addWidget(self.Particulas_GroupBox, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.Particulas_GroupBox, 0, 0, 1, 1)
+
+        self.tabWidget.addTab(self.tab, "")
+        self.tab_2 = QWidget()
+        self.tab_2.setObjectName(u"tab_2")
+        self.gridLayout_4 = QGridLayout(self.tab_2)
+        self.gridLayout_4.setObjectName(u"gridLayout_4")
+        self.Buscar_LineEdit = QLineEdit(self.tab_2)
+        self.Buscar_LineEdit.setObjectName(u"Buscar_LineEdit")
+
+        self.gridLayout_4.addWidget(self.Buscar_LineEdit, 1, 0, 2, 1)
+
+        self.tableWidget = QTableWidget(self.tab_2)
+        self.tableWidget.setObjectName(u"tableWidget")
+
+        self.gridLayout_4.addWidget(self.tableWidget, 0, 0, 1, 3)
+
+        self.MostrarTabla_PushButton = QPushButton(self.tab_2)
+        self.MostrarTabla_PushButton.setObjectName(u"MostrarTabla_PushButton")
+
+        self.gridLayout_4.addWidget(self.MostrarTabla_PushButton, 1, 2, 2, 1)
+
+        self.Buscar_PushButton = QPushButton(self.tab_2)
+        self.Buscar_PushButton.setObjectName(u"Buscar_PushButton")
+
+        self.gridLayout_4.addWidget(self.Buscar_PushButton, 1, 1, 2, 1)
+
+        self.tabWidget.addTab(self.tab_2, "")
+
+        self.gridLayout_3.addWidget(self.tabWidget, 0, 0, 1, 1)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
@@ -115,6 +150,9 @@ class Ui_MainWindow(object):
         self.menuArchivo.addAction(self.actionGuardar)
 
         self.retranslateUi(MainWindow)
+
+        self.tabWidget.setCurrentIndex(1)
+
 
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
@@ -134,6 +172,11 @@ class Ui_MainWindow(object):
         self.AgregarInicio_PushButton.setText(QCoreApplication.translate("MainWindow", u"Agregar Inicio", None))
         self.AgregarFinal_PushButton.setText(QCoreApplication.translate("MainWindow", u"Agregar Final", None))
         self.Mostrar_PushButon.setText(QCoreApplication.translate("MainWindow", u"Mostrar", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Tab 1", None))
+        self.Buscar_LineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Identificador de Particua", None))
+        self.MostrarTabla_PushButton.setText(QCoreApplication.translate("MainWindow", u"Mostrar", None))
+        self.Buscar_PushButton.setText(QCoreApplication.translate("MainWindow", u"Buscar", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Tab 2", None))
         self.menuArchivo.setTitle(QCoreApplication.translate("MainWindow", u"Archivo", None))
     # retranslateUi
 
