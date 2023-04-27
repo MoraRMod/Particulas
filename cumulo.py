@@ -13,14 +13,13 @@ class Cumulo:
         print('Se agrega al inicio.')
         self.__cumulos.insert(0, particula)
         
-
     def mostrar(self):
-        for particula in self.__cumulos:
-            print(particula)
+        for p in self.__cumulos:
+            print(p)
             
     def __str__(self):
         return "".join(
-            str(c) + "\n" for c in self.__cumulos
+            str(p) + "\n" for p in self.__cumulos
         )
     
     def __len__(self):
@@ -64,6 +63,3 @@ class Cumulo:
                 return 1
         except:
             return 0
-    
-cumulo = Cumulo()
-cumulo.mostrar()
