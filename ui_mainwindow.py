@@ -115,10 +115,10 @@ class Ui_MainWindow(object):
 
         self.gridLayout_4.addWidget(self.Buscar_LineEdit, 1, 0, 2, 1)
 
-        self.tableWidget = QTableWidget(self.tab_2)
-        self.tableWidget.setObjectName(u"tableWidget")
+        self.Tablita_TableWidget = QTableWidget(self.tab_2)
+        self.Tablita_TableWidget.setObjectName(u"Tablita_TableWidget")
 
-        self.gridLayout_4.addWidget(self.tableWidget, 0, 0, 1, 3)
+        self.gridLayout_4.addWidget(self.Tablita_TableWidget, 0, 0, 1, 3)
 
         self.MostrarTabla_PushButton = QPushButton(self.tab_2)
         self.MostrarTabla_PushButton.setObjectName(u"MostrarTabla_PushButton")
@@ -172,11 +172,11 @@ class Ui_MainWindow(object):
         self.AgregarInicio_PushButton.setText(QCoreApplication.translate("MainWindow", u"Agregar Inicio", None))
         self.AgregarFinal_PushButton.setText(QCoreApplication.translate("MainWindow", u"Agregar Final", None))
         self.Mostrar_PushButon.setText(QCoreApplication.translate("MainWindow", u"Mostrar", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Tab 1", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Agregar", None))
         self.Buscar_LineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Identificador de Particua", None))
         self.MostrarTabla_PushButton.setText(QCoreApplication.translate("MainWindow", u"Mostrar", None))
         self.Buscar_PushButton.setText(QCoreApplication.translate("MainWindow", u"Buscar", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Tab 2", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Tabla", None))
         self.menuArchivo.setTitle(QCoreApplication.translate("MainWindow", u"Archivo", None))
     # retranslateUi
 
