@@ -22,7 +22,52 @@ class MainWindow(QMainWindow):
 
         self.ui.actionAbrir.triggered.connect(self.action_Abrir_Archivo)
         self.ui.actionGuardar.triggered.connect(self.action_Guardar_Archivo)
+        self.ui.MostrarTabla_PushButton.clicked.connect(self.mostrar_tabla)
+        self.ui.Buscar_PushButton.clicked.connect(self.buscar_id)
 
+    @Slot()
+    def buscar_id(self):
+        id = self.ui.Buscar_LineEdit.text()
+
+        encontrado = False
+
+        for particula in self.cumulo:
+            if id == particula.id:
+                self.ui.Tablita_TableWidget.clear()
+                self.ui.Tablita_TableWidget.setRowCount(1)
+
+                id_widget = QTableWidgetItem(str(particula.id))
+                origenX_widget = QTableWidgetItem(str(particula.origenX))
+                origenY_widget = QTableWidgetItem(str(particula.origenY))
+                destinoX_widget = QTableWidgetItem(str(particula.destinoX))
+                destinoY_widget = QTableWidgetItem(str(particula.destinoY))
+                velocidad_widget = QTableWidgetItem(str(particula.velocidad))
+                red_widget = QTableWidgetItem(str(particula.red))
+                green_widget = QTableWidgetItem(str(particula.green))
+                blue_widget = QTableWidgetItem(str(particula.blue))
+                distancia_widget = QTableWidgetItem(str(particula.distancia))
+
+                self.ui.Tablita_TableWidget.setItem(0, 0, id_widget)
+                self.ui.Tablita_TableWidget.setItem(0, 1, origenX_widget)
+                self.ui.Tablita_TableWidget.setItem(0, 2, origenY_widget)
+                self.ui.Tablita_TableWidget.setItem(0, 3, destinoX_widget)
+                self.ui.Tablita_TableWidget.setItem(0, 4, destinoY_widget)
+                self.ui.Tablita_TableWidget.setItem(0, 5, velocidad_widget)
+                self.ui.Tablita_TableWidget.setItem(0, 6, red_widget)
+                self.ui.Tablita_TableWidget.setItem(0, 7, green_widget)
+                self.ui.Tablita_TableWidget.setItem(0, 8, blue_widget)
+                self.ui.Tablita_TableWidget.setItem(0, 9, distancia_widget)
+
+                encontrado = True
+
+                return
+            if not encontrado:
+                QMessageBox.warning(
+                    self,
+                    "Atencion",
+                    f'La particula con el identificador "{id}" no fue encontrado.'
+                )
+    
     @Slot()
     def action_Abrir_Archivo(self):
         ubicacion = QFileDialog.getSaveFileName(
@@ -105,3 +150,38 @@ class MainWindow(QMainWindow):
     def click_mostrar(self):
         self.ui.Contenido_PlainTextEdit.clear()
         self.ui.Contenido_PlainTextEdit.insertPlainText(str(self.cumulo))
+
+    @Slot()
+    def mostrar_tabla(self):
+        self.ui.Tablita_TableWidget.setColumnCount(10)
+
+        headers = ["ID", "OrigenX", "OrigenY", "DestinoX", "DestinoY", "Velocidad", "Red", "Green", "Blue", "Distancia"]
+
+        self.ui.Tablita_TableWidget.setHorizontalHeaderLabels(headers)
+        self.ui.Tablita_TableWidget.setRowCount(len(self.cumulo))
+
+        row = 0
+        for particula in self.cumulo:
+            id_widget = QTableWidgetItem(str(particula.id))
+            origenX_widget = QTableWidgetItem(str(particula.origenX))
+            origenY_widget = QTableWidgetItem(str(particula.origenY))
+            destinoX_widget = QTableWidgetItem(str(particula.destinoX))
+            destinoY_widget = QTableWidgetItem(str(particula.destinoY))
+            velocidad_widget = QTableWidgetItem(str(particula.velocidad))
+            red_widget = QTableWidgetItem(str(particula.red))
+            green_widget = QTableWidgetItem(str(particula.green))
+            blue_widget = QTableWidgetItem(str(particula.blue))
+            distancia_widget = QTableWidgetItem(str(particula.distancia))
+
+            self.ui.Tablita_TableWidget.setItem(row, 0, id_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 1, origenX_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 2, origenY_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 3, destinoX_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 4, destinoY_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 5, velocidad_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 6, red_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 7, green_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 8, blue_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 9, distancia_widget)
+
+            row += 1

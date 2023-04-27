@@ -228,7 +228,7 @@
         <item row="1" column="0" rowspan="2">
          <widget class="QLineEdit" name="Buscar_LineEdit">
           <property name="placeholderText">
-           <string>Identificador de Particua</string>
+           <string>Identificador de Particula</string>
           </property>
          </widget>
         </item>
