@@ -22,7 +22,7 @@
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
-        <string>Tab 1</string>
+        <string>Agregar</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0">
@@ -222,7 +222,7 @@
       </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
-        <string>Tab 2</string>
+        <string>Tabla</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="1" column="0" rowspan="2">
@@ -233,7 +233,7 @@
          </widget>
         </item>
         <item row="0" column="0" colspan="3">
-         <widget class="QTableWidget" name="tableWidget"/>
+         <widget class="QTableWidget" name="Tablita_TableWidget"/>
         </item>
         <item row="1" column="2" rowspan="2">
          <widget class="QPushButton" name="MostrarTabla_PushButton">
