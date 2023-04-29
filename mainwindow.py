@@ -203,13 +203,13 @@ class MainWindow(QMainWindow):
         pen.setWidth(2)
 
         for particula in self.cumulo:
-            origenX = particula.origenX
-            origenY = particula.origenY
-            destinoX = self.ui.DestinoX_SpinBox.value()
-            destinoY = self.ui.DestinoY_SpinBox.value()
-            red = self.ui.Red_SpinBox.value()
-            green = self.ui.Green_SpinBox.value()
-            blue = self.ui.Blue_SpinBox.value()
+            origenX = int(particula.origenX)
+            origenY = int(particula.origenY)
+            destinoX = int(self.ui.DestinoX_SpinBox.value())
+            destinoY = int(self.ui.DestinoY_SpinBox.value())
+            red = int(self.ui.Red_SpinBox.value())
+            green = int(self.ui.Green_SpinBox.value())
+            blue = int(self.ui.Blue_SpinBox.value())
 
             color = QColor(red, green, blue)
             pen.setColor(color)
