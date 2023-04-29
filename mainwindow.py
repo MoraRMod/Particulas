@@ -29,7 +29,7 @@ class MainWindow(QMainWindow):
         self.ui.Buscar_PushButton.clicked.connect(self.buscar_id)
         self.ui.MostrarTabla_PushButton.clicked.connect(self.mostrar_tabla)
 
-        #self.ui.Dibujar_PushButton.clicked.connect(self.dibujarTabla)
+        self.ui.Dibujar_PushButton.clicked.connect(self.dibujarTabla)
         self.ui.Limpiar_PushButton.clicked.connect(self.limpiarTabla)
 
     @Slot()
@@ -196,3 +196,11 @@ class MainWindow(QMainWindow):
             self.ui.Tablita_TableWidget.setItem(row, 9, distancia_widget)
 
             row += 1
+    
+    def wheelEvent(self, event):
+        print(event.delta())
+
+        if event.delta() > 0:
+            self.ui.Grafica_GraphicsView.scale(1.2, 1.2)
+        else:
+            self.ui.Grafica_GraphicsView.scale(0.8, 0.8)
