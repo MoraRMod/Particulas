@@ -16,6 +16,9 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        self.scene = QGraphicsScene()
+        self.ui.Grafica_GraphicsView.setScene(self.scene)
+
         self.ui.AgregarInicio_PushButton.clicked.connect(self.click_agregar)
         self.ui.AgregarFinal_PushButton.clicked.connect(self.click_agregar_inicio)
         self.ui.Mostrar_PushButon.clicked.connect(self.click_mostrar)
@@ -25,6 +28,13 @@ class MainWindow(QMainWindow):
 
         self.ui.Buscar_PushButton.clicked.connect(self.buscar_id)
         self.ui.MostrarTabla_PushButton.clicked.connect(self.mostrar_tabla)
+
+        #self.ui.Dibujar_PushButton.clicked.connect(self.dibujarTabla)
+        self.ui.Limpiar_PushButton.clicked.connect(self.limpiarTabla)
+
+    @Slot()
+    def limpiarTabla(self):
+        self.scene.clear()
 
     @Slot()
     def buscar_id(self):
