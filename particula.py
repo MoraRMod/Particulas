@@ -24,6 +24,9 @@ class Particula:
             "Distancia: " + str(self.__distancia) + "\n"
         )
     
+    def __lt__(self, other):
+        return self.__id < other.__id
+    
     def to_dict(self):
         return {
             "id": self.__id,
