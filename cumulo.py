@@ -4,6 +4,7 @@ import json
 class Cumulo:
     def __init__(self) -> None:
         self.__cumulos = []
+        particula = Particula
     
     def agregar_final(self, particula:Particula):
         print('Se agrega al final.')
@@ -41,6 +42,9 @@ class Cumulo:
             return quark
         else:
             raise StopIteration
+        
+    def __lt__(self, other):
+        return self.__cumulos < other.__cumulos
     
     def abrir(self, ubicacion):
         try:
