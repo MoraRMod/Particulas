@@ -4,8 +4,7 @@ from PySide2.QtGui import *
 from ui_mainwindow import Ui_MainWindow
 from cumulo import Cumulo
 from particula import Particula
-from random import randint
-import math
+from algoritmos import distancia_euclideana
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -80,32 +79,32 @@ class MainWindow(QMainWindow):
     
     @Slot()
     def click_agregar(self):
-        id = randint(0, 9999)
-        origenX = randint(0, 50)
-        origenY = randint(0, 50)
+        id = self.ui.ID_LineEdit.text()
+        origenX = self.ui.OrigenX_SpinBox.value()
+        origenY = self.ui.OrigenY_SpinBox.value()
         destinoX = self.ui.DestinoX_SpinBox.value()
         destinoY = self.ui.DestinoY_SpinBox.value()
         velocidad = self.ui.Velocidad_SpinBox.value()
         red = self.ui.Red_SpinBox.value()
         green = self.ui.Green_SpinBox.value()
         blue = self.ui.Blue_SpinBox.value()
-        distancia = math.sqrt((destinoX - origenX)^2 + (destinoY - origenY)^2)
+        distancia = distancia_euclideana(origenX, origenY, destinoX, destinoY)
 
         particula = Particula(id, origenX, origenY, destinoX, destinoY, velocidad, red, green, blue, distancia)
         self.cumulo.agregar_final(particula)
     
     @Slot()
     def click_agregar_inicio(self):
-        id = randint(0, 9999)
-        origenX = randint(0, 50)
-        origenY = randint(0, 50)
+        id = self.ui.ID_LineEdit.text()
+        origenX = self.ui.OrigenX_SpinBox.value()
+        origenY = self.ui.OrigenY_SpinBox.value()
         destinoX = self.ui.DestinoX_SpinBox.value()
         destinoY = self.ui.DestinoY_SpinBox.value()
         velocidad = self.ui.Velocidad_SpinBox.value()
         red = self.ui.Red_SpinBox.value()
         green = self.ui.Green_SpinBox.value()
         blue = self.ui.Blue_SpinBox.value()
-        distancia = math.sqrt((destinoX - origenX)^2 + (destinoY - origenY)^2)
+        distancia = distancia_euclideana(origenX, origenY, destinoX, destinoY)
 
         particula = Particula(id, origenX, origenY, destinoX, destinoY, velocidad, red, green, blue, distancia)
         self.cumulo.agregar_inicio(particula)
@@ -203,8 +202,8 @@ class MainWindow(QMainWindow):
         pen.setWidth(2)
 
         for particula in self.cumulo:
-            origenX = int(particula.origenX)
-            origenY = int(particula.origenY)
+            origenX = int(self.ui.OrigenX_SpinBox.value())
+            origenY = int(self.ui.OrigenY_SpinBox.value())
             destinoX = int(self.ui.DestinoX_SpinBox.value())
             destinoY = int(self.ui.DestinoY_SpinBox.value())
             red = int(self.ui.Red_SpinBox.value())
