@@ -18,21 +18,58 @@ class MainWindow(QMainWindow):
         self.scene = QGraphicsScene()
         self.ui.Grafica_GraphicsView.setScene(self.scene)
 
-        self.ui.AgregarInicio_PushButton.clicked.connect(self.click_agregar_inicio)
-        self.ui.AgregarFinal_PushButton.clicked.connect(self.click_agregar)
-        self.ui.Mostrar_PushButon.clicked.connect(self.click_mostrar)
+        self.ui.AgregarInicio_PushButton.clicked.connect(self.clickAgregarInicio)
+        self.ui.AgregarFinal_PushButton.clicked.connect(self.clickAgregar)
+        self.ui.Mostrar_PushButon.clicked.connect(self.clickMostrar)
 
-        self.ui.actionAbrir.triggered.connect(self.action_Abrir_Archivo)
-        self.ui.actionGuardar.triggered.connect(self.action_Guardar_Archivo)
+        self.ui.actionAbrir.triggered.connect(self.actionAbrirArchivo)
+        self.ui.actionGuardar.triggered.connect(self.actionGuardarArchivo)
 
-        self.ui.Buscar_PushButton.clicked.connect(self.buscar_id)
-        self.ui.MostrarTabla_PushButton.clicked.connect(self.mostrar_tabla)
+        self.ui.Buscar_PushButton.clicked.connect(self.buscarID)
+        self.ui.MostrarTabla_PushButton.clicked.connect(self.mostrarTabla)
 
         self.ui.Dibujar_PushButton.clicked.connect(self.dibujarTabla)
         self.ui.Limpiar_PushButton.clicked.connect(self.limpiarTabla)
-    
+
     @Slot()
-    def action_Abrir_Archivo(self):
+    def clickAgregarInicio(self):
+        id = self.ui.ID_LineEdit.text()
+        origenX = self.ui.OrigenX_SpinBox.value()
+        origenY = self.ui.OrigenY_SpinBox.value()
+        destinoX = self.ui.DestinoX_SpinBox.value()
+        destinoY = self.ui.DestinoY_SpinBox.value()
+        velocidad = self.ui.Velocidad_SpinBox.value()
+        red = self.ui.Red_SpinBox.value()
+        green = self.ui.Green_SpinBox.value()
+        blue = self.ui.Blue_SpinBox.value()
+        distancia = distancia_euclideana(origenX, origenY, destinoX, destinoY)
+
+        particula = Particula(id, origenX, origenY, destinoX, destinoY, velocidad, red, green, blue, distancia)
+        self.cumulo.agregar_inicio(particula)
+
+    @Slot()
+    def clickAgregar(self):
+        id = self.ui.ID_LineEdit.text()
+        origenX = self.ui.OrigenX_SpinBox.value()
+        origenY = self.ui.OrigenY_SpinBox.value()
+        destinoX = self.ui.DestinoX_SpinBox.value()
+        destinoY = self.ui.DestinoY_SpinBox.value()
+        velocidad = self.ui.Velocidad_SpinBox.value()
+        red = self.ui.Red_SpinBox.value()
+        green = self.ui.Green_SpinBox.value()
+        blue = self.ui.Blue_SpinBox.value()
+        distancia = distancia_euclideana(origenX, origenY, destinoX, destinoY)
+
+        particula = Particula(id, origenX, origenY, destinoX, destinoY, velocidad, red, green, blue, distancia)
+        self.cumulo.agregar_final(particula)
+
+    @Slot()
+    def clickMostrar(self):
+        self.ui.Contenido_PlainTextEdit.clear()
+        self.ui.Contenido_PlainTextEdit.insertPlainText(str(self.cumulo))
+
+    @Slot()
+    def actionAbrirArchivo(self):
         ubicacion = QFileDialog.getSaveFileName(
             self,
             'Abrir Archivo',
@@ -54,7 +91,7 @@ class MainWindow(QMainWindow):
             )
 
     @Slot()
-    def action_Guardar_Archivo(self):
+    def actionGuardarArchivo(self):
         ubicacion = QFileDialog.getSaveFileName(
             self,
             'Guardar Archivo',
@@ -76,81 +113,9 @@ class MainWindow(QMainWindow):
                 "Error",
                 "No se pudo crear el archivo." + ubicacion
             )
-    
+            
     @Slot()
-    def click_agregar(self):
-        id = self.ui.ID_LineEdit.text()
-        origenX = self.ui.OrigenX_SpinBox.value()
-        origenY = self.ui.OrigenY_SpinBox.value()
-        destinoX = self.ui.DestinoX_SpinBox.value()
-        destinoY = self.ui.DestinoY_SpinBox.value()
-        velocidad = self.ui.Velocidad_SpinBox.value()
-        red = self.ui.Red_SpinBox.value()
-        green = self.ui.Green_SpinBox.value()
-        blue = self.ui.Blue_SpinBox.value()
-        distancia = distancia_euclideana(origenX, origenY, destinoX, destinoY)
-
-        particula = Particula(id, origenX, origenY, destinoX, destinoY, velocidad, red, green, blue, distancia)
-        self.cumulo.agregar_final(particula)
-    
-    @Slot()
-    def click_agregar_inicio(self):
-        id = self.ui.ID_LineEdit.text()
-        origenX = self.ui.OrigenX_SpinBox.value()
-        origenY = self.ui.OrigenY_SpinBox.value()
-        destinoX = self.ui.DestinoX_SpinBox.value()
-        destinoY = self.ui.DestinoY_SpinBox.value()
-        velocidad = self.ui.Velocidad_SpinBox.value()
-        red = self.ui.Red_SpinBox.value()
-        green = self.ui.Green_SpinBox.value()
-        blue = self.ui.Blue_SpinBox.value()
-        distancia = distancia_euclideana(origenX, origenY, destinoX, destinoY)
-
-        particula = Particula(id, origenX, origenY, destinoX, destinoY, velocidad, red, green, blue, distancia)
-        self.cumulo.agregar_inicio(particula)
-
-    @Slot()
-    def click_mostrar(self):
-        self.ui.Contenido_PlainTextEdit.clear()
-        self.ui.Contenido_PlainTextEdit.insertPlainText(str(self.cumulo))
-
-    @Slot()
-    def mostrar_tabla(self):
-        self.ui.Tablita_TableWidget.setColumnCount(10)
-
-        headers = ["ID", "OrigenX", "OrigenY", "DestinoX", "DestinoY", "Velocidad", "Red", "Green", "Blue", "Distancia"]
-
-        self.ui.Tablita_TableWidget.setHorizontalHeaderLabels(headers)
-        self.ui.Tablita_TableWidget.setRowCount(len(self.cumulo))
-
-        row = 0
-        for particula in self.cumulo:
-            id_widget = QTableWidgetItem(str(particula.id))
-            origenX_widget = QTableWidgetItem(str(particula.origenX))
-            origenY_widget = QTableWidgetItem(str(particula.origenY))
-            destinoX_widget = QTableWidgetItem(str(particula.destinoX))
-            destinoY_widget = QTableWidgetItem(str(particula.destinoY))
-            velocidad_widget = QTableWidgetItem(str(particula.velocidad))
-            red_widget = QTableWidgetItem(str(particula.red))
-            green_widget = QTableWidgetItem(str(particula.green))
-            blue_widget = QTableWidgetItem(str(particula.blue))
-            distancia_widget = QTableWidgetItem(str(particula.distancia))
-
-            self.ui.Tablita_TableWidget.setItem(row, 0, id_widget)
-            self.ui.Tablita_TableWidget.setItem(row, 1, origenX_widget)
-            self.ui.Tablita_TableWidget.setItem(row, 2, origenY_widget)
-            self.ui.Tablita_TableWidget.setItem(row, 3, destinoX_widget)
-            self.ui.Tablita_TableWidget.setItem(row, 4, destinoY_widget)
-            self.ui.Tablita_TableWidget.setItem(row, 5, velocidad_widget)
-            self.ui.Tablita_TableWidget.setItem(row, 6, red_widget)
-            self.ui.Tablita_TableWidget.setItem(row, 7, green_widget)
-            self.ui.Tablita_TableWidget.setItem(row, 8, blue_widget)
-            self.ui.Tablita_TableWidget.setItem(row, 9, distancia_widget)
-
-            row += 1
-    
-    @Slot()
-    def buscar_id(self):
+    def buscarID(self):
         id = self.ui.Buscar_LineEdit.text()
 
         encontrado = False
@@ -191,11 +156,42 @@ class MainWindow(QMainWindow):
                     "Atencion",
                     f'La particula con el identificador "{id}" no fue encontrado.'
                 )
-    
-    @Slot()
-    def limpiarTabla(self):
-        self.scene.clear()
 
+    @Slot()
+    def mostrarTabla(self):
+        self.ui.Tablita_TableWidget.setColumnCount(10)
+
+        headers = ["ID", "OrigenX", "OrigenY", "DestinoX", "DestinoY", "Velocidad", "Red", "Green", "Blue", "Distancia"]
+
+        self.ui.Tablita_TableWidget.setHorizontalHeaderLabels(headers)
+        self.ui.Tablita_TableWidget.setRowCount(len(self.cumulo))
+
+        row = 0
+        for particula in self.cumulo:
+            id_widget = QTableWidgetItem(str(particula.id))
+            origenX_widget = QTableWidgetItem(str(particula.origenX))
+            origenY_widget = QTableWidgetItem(str(particula.origenY))
+            destinoX_widget = QTableWidgetItem(str(particula.destinoX))
+            destinoY_widget = QTableWidgetItem(str(particula.destinoY))
+            velocidad_widget = QTableWidgetItem(str(particula.velocidad))
+            red_widget = QTableWidgetItem(str(particula.red))
+            green_widget = QTableWidgetItem(str(particula.green))
+            blue_widget = QTableWidgetItem(str(particula.blue))
+            distancia_widget = QTableWidgetItem(str(particula.distancia))
+
+            self.ui.Tablita_TableWidget.setItem(row, 0, id_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 1, origenX_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 2, origenY_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 3, destinoX_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 4, destinoY_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 5, velocidad_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 6, red_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 7, green_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 8, blue_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 9, distancia_widget)
+
+            row += 1
+    
     @Slot()
     def dibujarTabla(self):
         pen = QPen()
@@ -216,6 +212,10 @@ class MainWindow(QMainWindow):
             self.scene.addEllipse(origenX, origenY, 6, 6, pen)
             self.scene.addEllipse(destinoX, destinoY, 6, 6, pen)
             self.scene.addLine(origenX, origenY, destinoX, destinoY, pen)
+            
+    @Slot()
+    def limpiarTabla(self):
+        self.scene.clear()
 
     def wheelEvent(self, event):
         print(event.delta())
