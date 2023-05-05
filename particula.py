@@ -1,4 +1,4 @@
-from algoritmos import distancia_euclideana
+from algoritmos import distanciaEuclideana
 
 class Particula:
     def __init__(self, id, origen_x = 0, origen_y = 0, destino_x = 0, destino_y = 0, velocidad = 0, red = 0, green = 0, blue = 0) -> None:
@@ -11,7 +11,7 @@ class Particula:
         self.__red = red
         self.__green = green
         self.__blue = blue
-        self.__distancia = distancia_euclideana(origen_x, origen_y, destino_x, destino_y)
+        self.__distancia = distanciaEuclideana(origen_x, origen_y, destino_x, destino_y)
 		
     def __str__(self):
         return(
