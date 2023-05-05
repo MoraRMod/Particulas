@@ -75,6 +75,3 @@ class Cumulo:
                 return 1
         except:
             return 0
-        
-cumulo = Cumulo()
-cumulo.mostrar()
