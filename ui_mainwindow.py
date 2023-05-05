@@ -243,20 +243,30 @@ class Ui_MainWindow(object):
         self.Grafica_Tab.setObjectName(u"Grafica_Tab")
         self.gridLayout_5 = QGridLayout(self.Grafica_Tab)
         self.gridLayout_5.setObjectName(u"gridLayout_5")
-        self.Grafica_GraphicsView = QGraphicsView(self.Grafica_Tab)
-        self.Grafica_GraphicsView.setObjectName(u"Grafica_GraphicsView")
+        self.Puntos_PushButton = QPushButton(self.Grafica_Tab)
+        self.Puntos_PushButton.setObjectName(u"Puntos_PushButton")
 
-        self.gridLayout_5.addWidget(self.Grafica_GraphicsView, 0, 0, 1, 2)
+        self.gridLayout_5.addWidget(self.Puntos_PushButton, 1, 0, 1, 1)
 
         self.Dibujar_PushButton = QPushButton(self.Grafica_Tab)
         self.Dibujar_PushButton.setObjectName(u"Dibujar_PushButton")
 
-        self.gridLayout_5.addWidget(self.Dibujar_PushButton, 1, 0, 1, 1)
+        self.gridLayout_5.addWidget(self.Dibujar_PushButton, 1, 1, 1, 1)
+
+        self.FuerzaBruta_PushButton = QPushButton(self.Grafica_Tab)
+        self.FuerzaBruta_PushButton.setObjectName(u"FuerzaBruta_PushButton")
+
+        self.gridLayout_5.addWidget(self.FuerzaBruta_PushButton, 1, 2, 1, 1)
 
         self.Limpiar_PushButton = QPushButton(self.Grafica_Tab)
         self.Limpiar_PushButton.setObjectName(u"Limpiar_PushButton")
 
-        self.gridLayout_5.addWidget(self.Limpiar_PushButton, 1, 1, 1, 1)
+        self.gridLayout_5.addWidget(self.Limpiar_PushButton, 1, 3, 1, 1)
+
+        self.Grafica_GraphicsView = QGraphicsView(self.Grafica_Tab)
+        self.Grafica_GraphicsView.setObjectName(u"Grafica_GraphicsView")
+
+        self.gridLayout_5.addWidget(self.Grafica_GraphicsView, 0, 0, 1, 4)
 
         self.tabWidget.addTab(self.Grafica_Tab, "")
 
@@ -279,7 +289,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -322,7 +332,9 @@ class Ui_MainWindow(object):
         self.MostrarTabla_PushButton.setText(QCoreApplication.translate("MainWindow", u"Mostrar", None))
         self.Buscar_PushButton.setText(QCoreApplication.translate("MainWindow", u"Buscar", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.Tabla_Tab), QCoreApplication.translate("MainWindow", u"Tabla", None))
-        self.Dibujar_PushButton.setText(QCoreApplication.translate("MainWindow", u"Dibujar", None))
+        self.Puntos_PushButton.setText(QCoreApplication.translate("MainWindow", u"Dibujar Puntos", None))
+        self.Dibujar_PushButton.setText(QCoreApplication.translate("MainWindow", u"Dibujar con Lineas", None))
+        self.FuerzaBruta_PushButton.setText(QCoreApplication.translate("MainWindow", u"Fuerza Bruta", None))
         self.Limpiar_PushButton.setText(QCoreApplication.translate("MainWindow", u"Limpiar", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.Grafica_Tab), QCoreApplication.translate("MainWindow", u"Gr\u00e1fica", None))
         self.menuArchivo.setTitle(QCoreApplication.translate("MainWindow", u"Archivo", None))
