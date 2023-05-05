@@ -1,25 +1,25 @@
 from algoritmos import distanciaEuclideana
 
 class Particula:
-    def __init__(self, id, origen_x = 0, origen_y = 0, destino_x = 0, destino_y = 0, velocidad = 0, red = 0, green = 0, blue = 0) -> None:
+    def __init__(self, id, origenX, origenY, destinoX, destinoY, velocidad, red, green, blue) -> None:
         self.__id = id
-        self.__origen_x = origen_x
-        self.__origen_y = origen_y
-        self.__destino_x = destino_x
-        self.__destino_y = destino_y
+        self.__origenX = origenX
+        self.__origenY = origenY
+        self.__destinoX = destinoX
+        self.__destinoY = destinoY
         self.__velocidad = velocidad
         self.__red = red
         self.__green = green
         self.__blue = blue
-        self.__distancia = distanciaEuclideana(origen_x, origen_y, destino_x, destino_y)
+        self.__distancia = distanciaEuclideana(origenX, origenY, destinoX, destinoY)
 		
     def __str__(self):
         return(
             "Identificador: " + str(self.__id) + "\n" +
-            "Origen X: " + str(self.__origen_x) + "\n" +
-            "Origen Y: " + str(self.__origen_y) + "\n" +
-            "Destino X: " + str(self.__destino_x) + "\n" +
-            "Destino Y: " + str(self.__destino_y )+ "\n" +
+            "OrigenX: " + str(self.__origenX) + "\n" +
+            "OrigenY: " + str(self.__origenY) + "\n" +
+            "DestinoX: " + str(self.__destinoX) + "\n" +
+            "DestinoY: " + str(self.__destinoY )+ "\n" +
             "Velocidad: " + str(self.__velocidad) + "\n" +
             "Red: " + str(self.__red) + "\n" +
             "Green: " + str(self.__green) + "\n" +
@@ -30,10 +30,10 @@ class Particula:
     def to_dict(self):
         return {
             "id": self.__id,
-            "origenX": self.__origen_x,
-            "origenY": self.__origen_y,
-            "destinoX": self.__destino_x,
-            "destinoY": self.__destino_y,
+            "origenX": self.__origenX,
+            "origenY": self.__origenY,
+            "destinoX": self.__destinoX,
+            "destinoY": self.__destinoY,
             "velocidad": self.__velocidad,
             "red": self.__red,
             "green": self.__green,
@@ -46,19 +46,19 @@ class Particula:
 
     @property
     def origenX(self):
-        return self.__origen_x
+        return self.__origenX
     
     @property
     def origenY(self):
-        return self.__origen_y
+        return self.__origenY
 
     @property
     def destinoX(self):
-        return self.__destino_x
+        return self.__destinoX
     
     @property
     def destinoY(self):
-        return self.__destino_y
+        return self.__destinoY
     
     @property
     def velocidad(self):
