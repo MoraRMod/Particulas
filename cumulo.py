@@ -60,7 +60,9 @@ class Cumulo:
                 json.dump(lista, archivo, indent = 4)
 
                 return 1
-        except:
+        except Exception as e:
+            print(f"Error al guardar archivo: {e}")
+            
             return 0
     
     def abrir(self, ubicacion):
