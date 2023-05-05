@@ -288,7 +288,13 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.actionAbrir.setText(QCoreApplication.translate("MainWindow", u"Abrir", None))
+#if QT_CONFIG(shortcut)
+        self.actionAbrir.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+D", None))
+#endif // QT_CONFIG(shortcut)
         self.actionGuardar.setText(QCoreApplication.translate("MainWindow", u"Guardar", None))
+#if QT_CONFIG(shortcut)
+        self.actionGuardar.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+G", None))
+#endif // QT_CONFIG(shortcut)
         self.Particulas_GroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Particulas", None))
         self.Datos_GroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Datos", None))
         self.ID_Label.setText(QCoreApplication.translate("MainWindow", u"ID", None))
