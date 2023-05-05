@@ -1,20 +1,7 @@
 import math
-from random import randint
 
 def distanciaEuclideana(x_1, y_1, x_2, y_2):
     return math.sqrt(math.pow((x_2 - x_1), 2) + math.pow((y_2 - y_1), 2))
-
-def getPuntos(n: int) -> list:
-    puntos = []
-
-    for i in range(n):
-        x = randint(0, 500)
-        y = randint(0, 500)
-
-        punto = (x, y)
-        puntos.append(punto)
-    
-    return puntos
 
 def puntosMasCarcanos(puntos_list) -> list:
     resultado = []
