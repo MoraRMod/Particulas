@@ -7,13 +7,22 @@ class Cumulo:
     
     def agregar_inicio(self, particula:Particula):
         self.__cumulos.insert(0, particula)
-        
+
     def agregar_final(self, particula:Particula):
         self.__cumulos.append(particula)
         
     def mostrar(self):
         for p in self.__cumulos:
             print(p)
+
+    def ordenarID(self, particula: Particula):
+        self.__cumulos.sort(key = lambda particula: particula.id)
+
+    def ordenarDistancia(self, particula: Particula):
+        self.__cumulos.sort(reverse = True, key = lambda particula: particula.distancia)
+    
+    def ordenarVelocidad(self, particula: Particula):
+        self.__cumulos.sort(key = lambda particula: particula.velocidad)
             
     def __str__(self):
         return "".join(
@@ -49,6 +58,8 @@ class Cumulo:
                 lista = json.load(archivo)
 
                 self.__cumulos = [Particula(**particula) for particula in lista]
+
+                return 1
         except:
             return 0
     
