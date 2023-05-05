@@ -76,7 +76,7 @@ class MainWindow(QMainWindow):
 
     @Slot()
     def actionAbrirArchivo(self):
-        ubicacion = QFileDialog.getSaveFileName(
+        ubicacion = QFileDialog.getOpenFileName(
             self,
             'Abrir Archivo',
             '.',
