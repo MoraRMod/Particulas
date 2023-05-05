@@ -87,13 +87,13 @@ class MainWindow(QMainWindow):
             QMessageBox.information(
                 self,
                 "Exito",
-                "Se pudo abrir el archivo." + ubicacion
+                "Se pudo abrir el archivo " + ubicacion
             )
         else:
             QMessageBox.information(
                 self,
                 "Error",
-                "No se pudo abrir el archivo." + ubicacion
+                "No se pudo abrir el archivo " + ubicacion
             )
 
     @Slot()
@@ -105,19 +105,17 @@ class MainWindow(QMainWindow):
             'JSON (*.json)'
         )[0]
 
-        print(ubicacion)
-
         if self.cumulo.guardar(ubicacion):
             QMessageBox.information(
                 self,
                 "Exito",
-                "Se pudo crear el archivo." + ubicacion
+                "Se pudo crear el archivo " + ubicacion
             )
         else:
             QMessageBox.information(
                 self,
                 "Error",
-                "No se pudo crear el archivo." + ubicacion
+                "No se pudo crear el archivo " + ubicacion
             )
             
     @Slot()
