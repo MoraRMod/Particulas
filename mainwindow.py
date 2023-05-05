@@ -11,12 +11,13 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
 
         self.cumulo = Cumulo()
-        
+
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
         self.scene = QGraphicsScene()
         self.ui.Grafica_GraphicsView.setScene(self.scene)
+
 
         self.ui.AgregarInicio_PushButton.clicked.connect(self.clickAgregarInicio)
         self.ui.AgregarFinal_PushButton.clicked.connect(self.clickAgregar)
@@ -28,8 +29,13 @@ class MainWindow(QMainWindow):
         self.ui.Buscar_PushButton.clicked.connect(self.buscarID)
         self.ui.MostrarTabla_PushButton.clicked.connect(self.mostrarTabla)
 
-        self.ui.Dibujar_PushButton.clicked.connect(self.dibujarTabla)
-        self.ui.Limpiar_PushButton.clicked.connect(self.limpiarTabla)
+        self.ui.Dibujar_PushButton.clicked.connect(self.dibujarEscena)
+        self.ui.Limpiar_PushButton.clicked.connect(self.limpiarEscena)
+
+        #self.ui.ID_PushButton.clicked.connect(self.ordenarID)
+        #self.ui.Distancia_PushButon.clicked.connect(self.ordenarDistancia)
+        #self.ui.Velocidad_PushButon.clicked.connect(self.ordenarVelocidad)
+
 
     @Slot()
     def clickAgregarInicio(self):
@@ -193,7 +199,7 @@ class MainWindow(QMainWindow):
             row += 1
     
     @Slot()
-    def dibujarTabla(self):
+    def dibujarEscena(self):
         pen = QPen()
         pen.setWidth(2)
 
@@ -212,9 +218,9 @@ class MainWindow(QMainWindow):
             self.scene.addEllipse(origenX, origenY, 6, 6, pen)
             self.scene.addEllipse(destinoX, destinoY, 6, 6, pen)
             self.scene.addLine(origenX, origenY, destinoX, destinoY, pen)
-            
+
     @Slot()
-    def limpiarTabla(self):
+    def limpiarEscena(self):
         self.scene.clear()
 
     def wheelEvent(self, event):
@@ -224,3 +230,4 @@ class MainWindow(QMainWindow):
             self.ui.Grafica_GraphicsView.scale(1.2, 1.2)
         else:
             self.ui.Grafica_GraphicsView.scale(0.8, 0.8)
+    
