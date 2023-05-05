@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="Agregar_Tab">
        <attribute name="title">
@@ -289,22 +289,36 @@
         <string>Gráfica</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_5">
-        <item row="0" column="0" colspan="2">
-         <widget class="QGraphicsView" name="Grafica_GraphicsView"/>
-        </item>
         <item row="1" column="0">
-         <widget class="QPushButton" name="Dibujar_PushButton">
+         <widget class="QPushButton" name="Puntos_PushButton">
           <property name="text">
-           <string>Dibujar</string>
+           <string>Dibujar Puntos</string>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
+         <widget class="QPushButton" name="Dibujar_PushButton">
+          <property name="text">
+           <string>Dibujar Lineas</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QPushButton" name="FuerzaBruta_PushButton">
+          <property name="text">
+           <string>Fuerza Bruta</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3">
          <widget class="QPushButton" name="Limpiar_PushButton">
           <property name="text">
            <string>Limpiar</string>
           </property>
          </widget>
+        </item>
+        <item row="0" column="0" colspan="4">
+         <widget class="QGraphicsView" name="Grafica_GraphicsView"/>
         </item>
        </layout>
       </widget>
