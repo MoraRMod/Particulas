@@ -49,7 +49,7 @@ class MainWindow(QMainWindow):
         blue = self.ui.Blue_SpinBox.value()
 
         particula = Particula(id, origenX, origenY, destinoX, destinoY, velocidad, red, green, blue)
-        self.cumulo.agregar_inicio(particula)
+        self.cumulo.agregarInicio(particula)
 
     @Slot()
     def clickAgregar(self):
@@ -64,7 +64,7 @@ class MainWindow(QMainWindow):
         blue = self.ui.Blue_SpinBox.value()
 
         particula = Particula(id, origenX, origenY, destinoX, destinoY, velocidad, red, green, blue)
-        self.cumulo.agregar_final(particula)
+        self.cumulo.agregarFinal(particula)
 
     @Slot()
     def clickMostrar(self):
