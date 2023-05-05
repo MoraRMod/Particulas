@@ -4,7 +4,6 @@ import json
 class Cumulo:
     def __init__(self) -> None:
         self.__cumulos = []
-        particula = Particula
     
     def agregar_final(self, particula:Particula):
         print('Se agrega al final.')
@@ -58,7 +57,7 @@ class Cumulo:
     def guardar(self, ubicacion):
         try:
             with open(ubicacion, 'w') as archivo:
-                lista = [Particula.to_dict() for Particula in self.__cumulos]
+                lista = [particula.to_dict() for particula in self.__cumulos]
 
                 print(lista)
 
@@ -67,3 +66,6 @@ class Cumulo:
                 return 1
         except:
             return 0
+        
+cumulo = Cumulo()
+cumulo.mostrar()
