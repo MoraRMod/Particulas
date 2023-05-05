@@ -1,3 +1,4 @@
+from PySide2.QtWidgets import *
 from particula import Particula
 import json
 
@@ -70,5 +71,7 @@ class Cumulo:
                 self.__cumulos = [Particula(**particula) for particula in lista]
 
                 return 1
-        except:
+        except Exception as e:
+            print(f"Error al abrir archivo: {e}")
+            
             return 0
