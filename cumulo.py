@@ -5,11 +5,11 @@ class Cumulo:
     def __init__(self) -> None:
         self.__cumulos = []
     
-    def agregar_final(self, particula:Particula):
-        self.__cumulos.append(particula)
-    
     def agregar_inicio(self, particula:Particula):
         self.__cumulos.insert(0, particula)
+        
+    def agregar_final(self, particula:Particula):
+        self.__cumulos.append(particula)
         
     def mostrar(self):
         for p in self.__cumulos:
