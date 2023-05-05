@@ -48,9 +48,6 @@ class Cumulo:
             return quark
         else:
             raise StopIteration
-        
-    def __lt__(self, other):
-        return self.__cumulos < other.__cumulos
     
     def guardar(self, ubicacion):
         try:
