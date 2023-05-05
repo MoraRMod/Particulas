@@ -72,28 +72,6 @@ class MainWindow(QMainWindow):
         self.ui.Contenido_PlainTextEdit.insertPlainText(str(self.cumulo))
 
     @Slot()
-    def actionAbrirArchivo(self):
-        ubicacion = QFileDialog.getOpenFileName(
-            self,
-            'Abrir Archivo',
-            '.',
-            'JSON (*.json)'
-        )[0]
-
-        if self.cumulo.abrir(ubicacion):
-            QMessageBox.information(
-                self,
-                "Exito",
-                "Se pudo abrir el archivo " + ubicacion
-            )
-        else:
-            QMessageBox.information(
-                self,
-                "Error",
-                "No se pudo abrir el archivo " + ubicacion
-            )
-
-    @Slot()
     def actionGuardarArchivo(self):
         ubicacion = QFileDialog.getSaveFileName(
             self,
@@ -115,6 +93,28 @@ class MainWindow(QMainWindow):
                 "No se pudo crear el archivo " + ubicacion
             )
             
+    @Slot()
+    def actionAbrirArchivo(self):
+        ubicacion = QFileDialog.getOpenFileName(
+            self,
+            'Abrir Archivo',
+            '.',
+            'JSON (*.json)'
+        )[0]
+
+        if self.cumulo.abrir(ubicacion):
+            QMessageBox.information(
+                self,
+                "Exito",
+                "Se pudo abrir el archivo " + ubicacion
+            )
+        else:
+            QMessageBox.information(
+                self,
+                "Error",
+                "No se pudo abrir el archivo " + ubicacion
+            )
+
     @Slot()
     def buscarID(self):
         id = self.ui.Buscar_LineEdit.text()
