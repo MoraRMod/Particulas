@@ -4,7 +4,7 @@ from PySide2.QtGui import *
 from ui_mainwindow import Ui_MainWindow
 from cumulo import Cumulo
 from particula import Particula
-from algoritmos import puntosMasCarcanos
+from algoritmos import puntosMasCercanos
 from pprint import pprint
 import time
 
@@ -205,13 +205,14 @@ class MainWindow(QMainWindow):
         pen.setWidth(2)
 
         for particula in self.cumulo:
-            origenX = int(self.ui.OrigenX_SpinBox.value())
-            origenY = int(self.ui.OrigenY_SpinBox.value())
-            destinoX = int(self.ui.DestinoX_SpinBox.value())
-            destinoY = int(self.ui.DestinoY_SpinBox.value())
-            red = int(self.ui.Red_SpinBox.value())
-            green = int(self.ui.Green_SpinBox.value())
-            blue = int(self.ui.Blue_SpinBox.value())
+            # origenX = int(self.ui.OrigenX_SpinBox.value())
+            origenX = int(particula.origenX)
+            origenY = int(particula.origenY)
+            destinoX = int(particula.destinoX)
+            destinoY = int(particula.destinoY)
+            red = int(particula.red)
+            green = int(particula.green)
+            blue = int(particula.blue)
 
             color = QColor(red, green, blue)
             pen.setColor(color)
@@ -250,14 +251,14 @@ class MainWindow(QMainWindow):
         pen = QPen()
         pen.setWidth(2)
 
-        for molecula in self.cumulo:
-            origenX = int(self.ui.OrigenX_SpinBox.value())
-            origenY = int(self.ui.OrigenY_SpinBox.value())
-            destinoX = int(self.ui.DestinoX_SpinBox.value())
-            destinoY = int(self.ui.DestinoY_SpinBox.value())
-            red = int(self.ui.Red_SpinBox.value())
-            green = int(self.ui.Green_SpinBox.value())
-            blue = int(self.ui.Blue_SpinBox.value())
+        for particula in self.cumulo:
+            origenX = int(particula.origenX)
+            origenY = int(particula.origenY)
+            destinoX = int(particula.destinoX)
+            destinoY = int(particula.destinoY)
+            red = int(particula.red)
+            green = int(particula.green)
+            blue = int(particula.blue)
 
             color = QColor(red, green, blue)
             pen.setColor(color)
@@ -267,12 +268,15 @@ class MainWindow(QMainWindow):
 
     @Slot()
     def fuerzaBruta(self):
-        resultado = puntosMasCarcanos(self.cumulo)
+        coordenadas = [(p.origenX, p.origenY) for p in self.cumulo]
+        resultado = puntosMasCercanos(coordenadas)
+
         pprint(resultado)
+        
         for punto1, punto2 in resultado:
-            x1 = punto1[0]
-            y1 = punto1[1]
-            x2 = punto2[0]
-            y2 = punto2[1]
+            origenX = punto1[0]
+            origenY = punto1[1]
+            destinoX = punto2[0]
+            destinoY = punto2[1]
             
-            self.scene.addLine(x1+3,y1+3,x2+3,y2+3)
+            self.scene.addLine(origenX+3, origenY+3, destinoX+3, destinoY+3)
