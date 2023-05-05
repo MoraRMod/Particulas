@@ -4,7 +4,6 @@ from PySide2.QtGui import *
 from ui_mainwindow import Ui_MainWindow
 from cumulo import Cumulo
 from particula import Particula
-from algoritmos import distancia_euclideana
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -32,9 +31,9 @@ class MainWindow(QMainWindow):
         self.ui.Dibujar_PushButton.clicked.connect(self.dibujarEscena)
         self.ui.Limpiar_PushButton.clicked.connect(self.limpiarEscena)
 
-        #self.ui.ID_PushButton.clicked.connect(self.ordenarID)
-        #self.ui.Distancia_PushButon.clicked.connect(self.ordenarDistancia)
-        #self.ui.Velocidad_PushButon.clicked.connect(self.ordenarVelocidad)
+        self.ui.ID_PushButton.clicked.connect(self.ordenarID)
+        self.ui.Distancia_PushButon.clicked.connect(self.ordenarDistancia)
+        self.ui.Velocidad_PushButon.clicked.connect(self.ordenarVelocidad)
 
 
     @Slot()
@@ -48,9 +47,8 @@ class MainWindow(QMainWindow):
         red = self.ui.Red_SpinBox.value()
         green = self.ui.Green_SpinBox.value()
         blue = self.ui.Blue_SpinBox.value()
-        distancia = distancia_euclideana(origenX, origenY, destinoX, destinoY)
 
-        particula = Particula(id, origenX, origenY, destinoX, destinoY, velocidad, red, green, blue, distancia)
+        particula = Particula(id, origenX, origenY, destinoX, destinoY, velocidad, red, green, blue)
         self.cumulo.agregar_inicio(particula)
 
     @Slot()
@@ -64,9 +62,8 @@ class MainWindow(QMainWindow):
         red = self.ui.Red_SpinBox.value()
         green = self.ui.Green_SpinBox.value()
         blue = self.ui.Blue_SpinBox.value()
-        distancia = distancia_euclideana(origenX, origenY, destinoX, destinoY)
 
-        particula = Particula(id, origenX, origenY, destinoX, destinoY, velocidad, red, green, blue, distancia)
+        particula = Particula(id, origenX, origenY, destinoX, destinoY, velocidad, red, green, blue)
         self.cumulo.agregar_final(particula)
 
     @Slot()
@@ -228,4 +225,12 @@ class MainWindow(QMainWindow):
             self.ui.Grafica_GraphicsView.scale(1.2, 1.2)
         else:
             self.ui.Grafica_GraphicsView.scale(0.8, 0.8)
+
+    def ordenarID(self):
+        self.cumulo.ordenarID(self)
     
+    def ordenarDistancia(self):
+        self.cumulo.ordenarDistancia(self)
+
+    def ordenarVelocidad(self):
+        self.cumulo.ordenarVelocidad(self)
