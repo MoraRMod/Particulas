@@ -52,17 +52,6 @@ class Cumulo:
     def __lt__(self, other):
         return self.__cumulos < other.__cumulos
     
-    def abrir(self, ubicacion):
-        try:
-            with open(ubicacion, 'r') as archivo:
-                lista = json.load(archivo)
-
-                self.__cumulos = [Particula(**particula) for particula in lista]
-
-                return 1
-        except:
-            return 0
-    
     def guardar(self, ubicacion):
         try:
             with open(ubicacion, 'w') as archivo:
@@ -71,6 +60,17 @@ class Cumulo:
                 print(lista)
 
                 json.dump(lista, archivo, indent = 4)
+
+                return 1
+        except:
+            return 0
+    
+    def abrir(self, ubicacion):
+        try:
+            with open(ubicacion, 'r') as archivo:
+                lista = json.load(archivo)
+
+                self.__cumulos = [Particula(**particula) for particula in lista]
 
                 return 1
         except:
