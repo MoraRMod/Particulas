@@ -4,6 +4,9 @@ from PySide2.QtGui import *
 from ui_mainwindow import Ui_MainWindow
 from cumulo import Cumulo
 from particula import Particula
+from algoritmos import puntosMasCarcanos
+from pprint import pprint
+import time
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -34,6 +37,9 @@ class MainWindow(QMainWindow):
         self.ui.ID_PushButton.clicked.connect(self.ordenarID)
         self.ui.Distancia_PushButon.clicked.connect(self.ordenarDistancia)
         self.ui.Velocidad_PushButon.clicked.connect(self.ordenarVelocidad)
+
+        self.ui.Puntos_PushButton.clicked.connect(self.dibujarPuntos)
+        self.ui.FuerzaBruta_PushButton.clicked.connect(self.fuerzaBruta)
 
 
     @Slot()
@@ -218,6 +224,7 @@ class MainWindow(QMainWindow):
     def limpiarEscena(self):
         self.scene.clear()
 
+    @Slot()
     def wheelEvent(self, event):
         print(event.delta())
 
@@ -226,11 +233,46 @@ class MainWindow(QMainWindow):
         else:
             self.ui.Grafica_GraphicsView.scale(0.8, 0.8)
 
+    @Slot()
     def ordenarID(self):
         self.cumulo.ordenarID(self)
     
+    @Slot()
     def ordenarDistancia(self):
         self.cumulo.ordenarDistancia(self)
 
+    @Slot()
     def ordenarVelocidad(self):
         self.cumulo.ordenarVelocidad(self)
+
+    @Slot()
+    def dibujarPuntos(self):
+        pen = QPen()
+        pen.setWidth(2)
+
+        for molecula in self.cumulo:
+            origenX = int(self.ui.OrigenX_SpinBox.value())
+            origenY = int(self.ui.OrigenY_SpinBox.value())
+            destinoX = int(self.ui.DestinoX_SpinBox.value())
+            destinoY = int(self.ui.DestinoY_SpinBox.value())
+            red = int(self.ui.Red_SpinBox.value())
+            green = int(self.ui.Green_SpinBox.value())
+            blue = int(self.ui.Blue_SpinBox.value())
+
+            color = QColor(red, green, blue)
+            pen.setColor(color)
+
+            self.scene.addEllipse(origenX, origenY, 6, 6, pen)
+            self.scene.addEllipse(destinoX, destinoY, 6, 6, pen)
+
+    @Slot()
+    def fuerzaBruta(self):
+        resultado = puntosMasCarcanos(self.cumulo)
+        pprint(resultado)
+        for punto1, punto2 in resultado:
+            x1 = punto1[0]
+            y1 = punto1[1]
+            x2 = punto2[0]
+            y2 = punto2[1]
+            
+            self.scene.addLine(x1+3,y1+3,x2+3,y2+3)
