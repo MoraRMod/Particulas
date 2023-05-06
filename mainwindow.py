@@ -52,7 +52,11 @@ class MainWindow(QMainWindow):
         green = self.ui.Green_SpinBox.value()
         blue = self.ui.Blue_SpinBox.value()
 
-        particula = Particula(id, origenX, origenY, destinoX, destinoY, velocidad, red, green, blue)
+        origen = {"x": origenX, "y": origenY}
+        destino = {"x": destinoX, "y": destinoY}
+        color = {"red": red, "green": green, "blue": blue}
+
+        particula = Particula(id, origen, destino, velocidad, color)
         self.cumulo.agregarInicio(particula)
 
     @Slot()
@@ -67,7 +71,11 @@ class MainWindow(QMainWindow):
         green = self.ui.Green_SpinBox.value()
         blue = self.ui.Blue_SpinBox.value()
 
-        particula = Particula(id, origenX, origenY, destinoX, destinoY, velocidad, red, green, blue)
+        origen = {"x": origenX, "y": origenY}
+        destino = {"x": destinoX, "y": destinoY}
+        color = {"red": red, "green": green, "blue": blue}
+
+        particula = Particula(id, origen, destino, velocidad, color)
         self.cumulo.agregarFinal(particula)
 
     @Slot()
@@ -130,70 +138,63 @@ class MainWindow(QMainWindow):
                 self.ui.Tablita_TableWidget.clear()
                 self.ui.Tablita_TableWidget.setRowCount(1)
 
+                origen = "(" + str(particula.origenX) + ", " + str(particula.origenY) + ")"
+                destino = "(" + str(particula.destinoX) + ", " + str(particula.destinoY) + ")"
+                color = "(" + str(particula.red) + ", " + str(particula.green) + ", " + str(particula.blue) + ")"
+
                 id_widget = QTableWidgetItem(str(particula.id))
-                origenX_widget = QTableWidgetItem(str(particula.origenX))
-                origenY_widget = QTableWidgetItem(str(particula.origenY))
-                destinoX_widget = QTableWidgetItem(str(particula.destinoX))
-                destinoY_widget = QTableWidgetItem(str(particula.destinoY))
+                origen_widget = QTableWidgetItem(origen)
+                destino_widget = QTableWidgetItem(destino)
                 velocidad_widget = QTableWidgetItem(str(particula.velocidad))
-                red_widget = QTableWidgetItem(str(particula.red))
-                green_widget = QTableWidgetItem(str(particula.green))
-                blue_widget = QTableWidgetItem(str(particula.blue))
+                color_widget = QTableWidgetItem(color)
                 distancia_widget = QTableWidgetItem(str(particula.distancia))
 
                 self.ui.Tablita_TableWidget.setItem(0, 0, id_widget)
-                self.ui.Tablita_TableWidget.setItem(0, 1, origenX_widget)
-                self.ui.Tablita_TableWidget.setItem(0, 2, origenY_widget)
-                self.ui.Tablita_TableWidget.setItem(0, 3, destinoX_widget)
-                self.ui.Tablita_TableWidget.setItem(0, 4, destinoY_widget)
-                self.ui.Tablita_TableWidget.setItem(0, 5, velocidad_widget)
-                self.ui.Tablita_TableWidget.setItem(0, 6, red_widget)
-                self.ui.Tablita_TableWidget.setItem(0, 7, green_widget)
-                self.ui.Tablita_TableWidget.setItem(0, 8, blue_widget)
-                self.ui.Tablita_TableWidget.setItem(0, 9, distancia_widget)
+                self.ui.Tablita_TableWidget.setItem(0, 1, origen_widget)
+                self.ui.Tablita_TableWidget.setItem(0, 2, destino_widget)
+                self.ui.Tablita_TableWidget.setItem(0, 3, velocidad_widget)
+                self.ui.Tablita_TableWidget.setItem(0, 4, color_widget)
+                self.ui.Tablita_TableWidget.setItem(0, 5, distancia_widget)
 
                 encontrado = True
 
                 return
-            if not encontrado:
-                QMessageBox.warning(
-                    self,
-                    "Atencion",
-                    f'La particula con el identificador "{id}" no fue encontrado.'
-                )
+            
+        if not encontrado:
+            QMessageBox.warning(
+                self,
+                "Atencion",
+                f'La particula con el identificador "{id}" no fue encontrado.'
+            )
 
     @Slot()
     def mostrarTabla(self):
-        self.ui.Tablita_TableWidget.setColumnCount(10)
+        self.ui.Tablita_TableWidget.setColumnCount(6)
 
-        headers = ["ID", "OrigenX", "OrigenY", "DestinoX", "DestinoY", "Velocidad", "Red", "Green", "Blue", "Distancia"]
+        headers = ["ID", "Origen", "Destino", "Velocidad", "Color", "Distancia"]
 
         self.ui.Tablita_TableWidget.setHorizontalHeaderLabels(headers)
         self.ui.Tablita_TableWidget.setRowCount(len(self.cumulo))
 
         row = 0
         for particula in self.cumulo:
+            origen = "(" + str(particula.origenX) + ", " + str(particula.origenY) + ")"
+            destino = "(" + str(particula.destinoX) + ", " + str(particula.destinoY) + ")"
+            color = "(" + str(particula.red) + ", " + str(particula.green) + ", " + str(particula.blue) + ")"
+
             id_widget = QTableWidgetItem(str(particula.id))
-            origenX_widget = QTableWidgetItem(str(particula.origenX))
-            origenY_widget = QTableWidgetItem(str(particula.origenY))
-            destinoX_widget = QTableWidgetItem(str(particula.destinoX))
-            destinoY_widget = QTableWidgetItem(str(particula.destinoY))
+            origen_widget = QTableWidgetItem(origen)
+            destino_widget = QTableWidgetItem(destino)
             velocidad_widget = QTableWidgetItem(str(particula.velocidad))
-            red_widget = QTableWidgetItem(str(particula.red))
-            green_widget = QTableWidgetItem(str(particula.green))
-            blue_widget = QTableWidgetItem(str(particula.blue))
+            color_widget = QTableWidgetItem(color)
             distancia_widget = QTableWidgetItem(str(particula.distancia))
 
             self.ui.Tablita_TableWidget.setItem(row, 0, id_widget)
-            self.ui.Tablita_TableWidget.setItem(row, 1, origenX_widget)
-            self.ui.Tablita_TableWidget.setItem(row, 2, origenY_widget)
-            self.ui.Tablita_TableWidget.setItem(row, 3, destinoX_widget)
-            self.ui.Tablita_TableWidget.setItem(row, 4, destinoY_widget)
-            self.ui.Tablita_TableWidget.setItem(row, 5, velocidad_widget)
-            self.ui.Tablita_TableWidget.setItem(row, 6, red_widget)
-            self.ui.Tablita_TableWidget.setItem(row, 7, green_widget)
-            self.ui.Tablita_TableWidget.setItem(row, 8, blue_widget)
-            self.ui.Tablita_TableWidget.setItem(row, 9, distancia_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 1, origen_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 2, destino_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 3, velocidad_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 4, color_widget)
+            self.ui.Tablita_TableWidget.setItem(row, 5, distancia_widget)
 
             row += 1
     
@@ -203,7 +204,6 @@ class MainWindow(QMainWindow):
         pen.setWidth(2)
 
         for particula in self.cumulo:
-            # origenX = int(self.ui.OrigenX_SpinBox.value())
             origenX = int(particula.origenX)
             origenY = int(particula.origenY)
             destinoX = int(particula.destinoX)
