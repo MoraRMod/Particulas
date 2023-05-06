@@ -65,7 +65,7 @@ class Particula:
     
     def grafo(self):
         return {
-            "(" + str(self.__origenX) + ", " + str(self.__origenY) + ") --> [(" + str(self.__destinoX) + ", " + str(self.__destinoY) + "), " +  str(int(self.__distancia)) + "]"
+            "(" + str(self.__origenX) + ", " + str(self.__origenY) + "): [(" + str(self.__destinoX) + ", " + str(self.__destinoY) + "), " +  str(int(self.__distancia)) + "]"
         }
     
     @property
