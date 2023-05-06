@@ -25,4 +25,5 @@ def puntosMasCercanos(puntos_list)->list:
                     cercano = (two_origenX, two_origenY)
                 
         resultado.append((punto_i, cercano))
+        
     return resultado
