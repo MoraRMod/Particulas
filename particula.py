@@ -1,17 +1,35 @@
 from algoritmos import distanciaEuclideana
 
 class Particula:
-    def __init__(self, id, origenX, origenY, destinoX, destinoY, velocidad, red, green, blue) -> None:
+    def __init__(self, id = 0, origen = None, destino = None, velocidad = 0, color = None) -> None:
         self.__id = id
-        self.__origenX = origenX
-        self.__origenY = origenY
-        self.__destinoX = destinoX
-        self.__destinoY = destinoY
+
+        if origen is None:
+            self.__origenX = 0
+            self.__origenY = 0
+        else:
+            self.__origenX = origen["x"]
+            self.__origenY = origen["y"]
+
+        if destino is None:
+            self.__destinoX = 0
+            self.__destinoY = 0
+        else:
+            self.__destinoX = destino["x"]
+            self.__destinoY = destino["y"]
+
         self.__velocidad = velocidad
-        self.__red = red
-        self.__green = green
-        self.__blue = blue
-        self.__distancia = distanciaEuclideana(origenX, origenY, destinoX, destinoY)
+
+        if color is None:
+            self.__red = 0
+            self.__green = 0
+            self.__blue = 0
+        else:
+            self.__red = color["red"]
+            self.__green = color["green"]
+            self.__blue = color["blue"]
+
+        self.__distancia = distanciaEuclideana(self.__origenX, self.__origenY, self.__destinoX, self.__destinoY)
 		
     def __str__(self):
         return(
@@ -30,14 +48,20 @@ class Particula:
     def to_dict(self):
         return {
             "id": self.__id,
-            "origenX": self.__origenX,
-            "origenY": self.__origenY,
-            "destinoX": self.__destinoX,
-            "destinoY": self.__destinoY,
+            "origen": {
+                "x": self.__origenX,
+                "y": self.__origenY
+            },
+            "destino": {
+                "x": self.__destinoX,
+                "y": self.__destinoY
+            },
             "velocidad": self.__velocidad,
-            "red": self.__red,
-            "green": self.__green,
-            "blue": self.__blue
+            "color": {
+                "red": self.__red,
+                "green": self.__green,
+                "blue": self.__blue
+            }
         }
     
     @property
