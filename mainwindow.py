@@ -5,6 +5,7 @@ from ui_mainwindow import Ui_MainWindow
 from cumulo import Cumulo
 from particula import Particula
 from algoritmos import puntosMasCercanos
+from pprint import pprint
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -311,6 +312,7 @@ class MainWindow(QMainWindow):
 
             grafo[destino].append([origen, distancia])
 
+        pprint(str(grafo))
         self.ui.Contenido_PlainTextEdit.clear()
         self.ui.Contenido_PlainTextEdit.insertPlainText(str(grafo))
 
