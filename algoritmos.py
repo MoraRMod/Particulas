@@ -7,22 +7,21 @@ def puntosMasCercanos(puntos_list) -> list:
     resultado = []
 
     for punto_i in puntos_list:
-        x1 = punto_i[0]
-        y1 = punto_i[1]
+        origenX = punto_i[0]
+        origenY = punto_i[1]
         min = 1000
         cercano = (0,0)
 
         for punto_j in puntos_list:
             if punto_i != punto_j:
-                x2 = punto_j[0]
-                y2 = punto_j[1]
-                d = distanciaEuclideana(x1, y1, x2, y2)
+                destinoX = punto_j[0]
+                destinoY = punto_j[1]
+                d = distanciaEuclideana(origenX, origenY, destinoX, destinoY)
 
                 if d < min:
                     min = d
-                    cercano = (x2, y2)
+                    cercano = (destinoX, destinoY)
         
         resultado.append((punto_i, cercano))
     
     return resultado
-        
