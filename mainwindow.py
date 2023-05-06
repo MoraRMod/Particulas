@@ -5,8 +5,6 @@ from ui_mainwindow import Ui_MainWindow
 from cumulo import Cumulo
 from particula import Particula
 from algoritmos import puntosMasCercanos
-from pprint import pprint
-import time
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -276,5 +274,5 @@ class MainWindow(QMainWindow):
             origenY = punto1[1]
             destinoX = punto2[0]
             destinoY = punto2[1]
-            
+
             self.scene.addLine(origenX, origenY, destinoX, destinoY)
