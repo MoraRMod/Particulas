@@ -1,7 +1,7 @@
 from algoritmos import distanciaEuclideana
 
 class Particula:
-    def __init__(self, id = 0, origen = None, destino = None, velocidad = 0, color = None) -> None:
+    def __init__(self, id = 0, origen = None, destino = None, color = None, velocidad = 0) -> None:
         self.__id = id
 
         if origen is None:
@@ -18,8 +18,6 @@ class Particula:
             self.__destinoX = destino["x"]
             self.__destinoY = destino["y"]
 
-        self.__velocidad = velocidad
-
         if color is None:
             self.__red = 0
             self.__green = 0
@@ -29,6 +27,7 @@ class Particula:
             self.__green = color["green"]
             self.__blue = color["blue"]
 
+        self.__velocidad = velocidad
         self.__distancia = distanciaEuclideana(self.__origenX, self.__origenY, self.__destinoX, self.__destinoY)
 		
     def __str__(self):
@@ -38,10 +37,10 @@ class Particula:
             "OrigenY: " + str(self.__origenY) + "\n" +
             "DestinoX: " + str(self.__destinoX) + "\n" +
             "DestinoY: " + str(self.__destinoY )+ "\n" +
-            "Velocidad: " + str(self.__velocidad) + "\n" +
             "Red: " + str(self.__red) + "\n" +
             "Green: " + str(self.__green) + "\n" +
             "Blue: " + str(self.__blue) + "\n" +
+            "Velocidad: " + str(self.__velocidad) + "\n" +
             "Distancia: " + str(self.__distancia) + "\n"
         )
     
@@ -56,12 +55,12 @@ class Particula:
                 "x": self.__destinoX,
                 "y": self.__destinoY
             },
-            "velocidad": self.__velocidad,
             "color": {
                 "red": self.__red,
                 "green": self.__green,
                 "blue": self.__blue
-            }
+            },
+            "velocidad": self.__velocidad
         }
     
     @property
@@ -85,10 +84,6 @@ class Particula:
         return self.__destinoY
     
     @property
-    def velocidad(self):
-        return self.__velocidad
-    
-    @property
     def red(self):
         return self.__red
     
@@ -99,6 +94,10 @@ class Particula:
     @property
     def blue(self):
         return self.__blue
+    
+    @property
+    def velocidad(self):
+        return self.__velocidad
     
     @property
     def distancia(self):
