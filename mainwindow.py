@@ -263,7 +263,7 @@ class MainWindow(QMainWindow):
 
             self.scene.addEllipse(origenX, origenY, 6, 6, pen)
             self.scene.addEllipse(destinoX, destinoY, 6, 6, pen)
-            
+        
     @Slot()
     def fuerzaBruta(self):
         puntos = []
