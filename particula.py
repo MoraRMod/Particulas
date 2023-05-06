@@ -63,6 +63,11 @@ class Particula:
             "velocidad": self.__velocidad
         }
     
+    def grafo(self):
+        return {
+            "(" + str(self.__origenX) + ", " + str(self.__origenY) + ") --> [(" + str(self.__destinoX) + ", " + str(self.__destinoY) + "), " +  str(int(self.__distancia)) + "]"
+        }
+    
     @property
     def id(self):
         return self.__id
