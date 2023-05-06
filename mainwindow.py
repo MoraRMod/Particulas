@@ -263,16 +263,30 @@ class MainWindow(QMainWindow):
 
             self.scene.addEllipse(origenX, origenY, 6, 6, pen)
             self.scene.addEllipse(destinoX, destinoY, 6, 6, pen)
-    
+            
     @Slot()
     def fuerzaBruta(self):
-        coordenadas = [(p.origenX, p.origenY, p.destinoX, p.destinoY) for p in self.cumulo]
-        resultado = puntosMasCercanos(coordenadas)
+        puntos = []
+        pen = QPen()
+        pen.setWidth(2)
 
-        for punto1, punto2 in resultado:
-            origenX = punto1[0]
-            origenY = punto1[1]
-            destinoX = punto2[0]
-            destinoY = punto2[1]
+        for particula in self.cumulo:
+            p1 = (particula.origenX, particula.origenY, particula.destinoY, particula.destinoY)
+            p2 = (particula.origenX, particula.origenY, particula.destinoY, particula.destinoY)
 
-            self.scene.addLine(origenX, origenY, destinoX, destinoY)
+            puntos.append(p1)
+            puntos.append(p2)
+        
+        res = puntosMasCercanos(puntos)
+
+        for particula in self.cumulo:
+            color = QColor(particula.red, particula.green, particula.blue)
+            pen.setColor(color)
+
+            for punto1, punto2 in res:
+                origenX = punto1[0]
+                origenY = punto1[1]
+                destinoX = punto2[0]
+                destinoY = punto2[1]
+
+                self.scene.addLine(origenX, origenY, destinoX, destinoY, pen)
