@@ -19,9 +19,9 @@ class MainWindow(QMainWindow):
         self.ui.Grafica_GraphicsView.setScene(self.scene)
 
 
-        self.ui.AgregarInicio_PushButton.clicked.connect(self.clickAgregarInicio)
-        self.ui.AgregarFinal_PushButton.clicked.connect(self.clickAgregar)
-        self.ui.Mostrar_PushButon.clicked.connect(self.clickMostrar)
+        self.ui.AgregarInicio_PushButton.clicked.connect(self.agregarInicio)
+        self.ui.AgregarFinal_PushButton.clicked.connect(self.agregarFinal)
+        self.ui.Mostrar_PushButon.clicked.connect(self.mostrar)
 
         self.ui.actionAbrir.triggered.connect(self.actionAbrirArchivo)
         self.ui.actionGuardar.triggered.connect(self.actionGuardarArchivo)
@@ -39,9 +39,10 @@ class MainWindow(QMainWindow):
         self.ui.Puntos_PushButton.clicked.connect(self.dibujarPuntos)
         self.ui.FuerzaBruta_PushButton.clicked.connect(self.fuerzaBruta)
 
+        self.ui.Grafo_PushButton.clicked.connect(self.mostrarGrafo)
 
     @Slot()
-    def clickAgregarInicio(self):
+    def agregarInicio(self):
         id = self.ui.ID_LineEdit.text()
         origenX = self.ui.OrigenX_SpinBox.value()
         origenY = self.ui.OrigenY_SpinBox.value()
@@ -60,7 +61,7 @@ class MainWindow(QMainWindow):
         self.cumulo.agregarInicio(particula)
 
     @Slot()
-    def clickAgregar(self):
+    def agregarFinal(self):
         id = self.ui.ID_LineEdit.text()
         origenX = self.ui.OrigenX_SpinBox.value()
         origenY = self.ui.OrigenY_SpinBox.value()
@@ -79,7 +80,7 @@ class MainWindow(QMainWindow):
         self.cumulo.agregarFinal(particula)
 
     @Slot()
-    def clickMostrar(self):
+    def mostrar(self):
         self.ui.Contenido_PlainTextEdit.clear()
         self.ui.Contenido_PlainTextEdit.insertPlainText(str(self.cumulo))
 
@@ -290,3 +291,27 @@ class MainWindow(QMainWindow):
                 destinoY = punto2[1]
 
                 self.scene.addLine(origenX, origenY, destinoX, destinoY, pen)
+    
+    @Slot()
+    def mostrarGrafo(self):
+        grafo = {}
+
+        for particula in self.cumulo:
+            origen = (particula.origenX, particula.origenY)
+            destino = (particula.destinoX, particula.destinoY)
+            distancia = int(particula.distancia)
+
+            if origen not in grafo:
+                grafo[origen] = []
+
+            grafo[origen].append([destino, distancia])
+
+            if destino not in grafo:
+                grafo[destino] = []
+
+            grafo[destino].append([origen, distancia])
+
+        self.ui.Contenido_PlainTextEdit.clear()
+        self.ui.Contenido_PlainTextEdit.insertPlainText(str(grafo))
+
+            
