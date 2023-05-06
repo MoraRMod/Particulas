@@ -1,4 +1,3 @@
-from PySide2.QtWidgets import *
 from particula import Particula
 import json
 
