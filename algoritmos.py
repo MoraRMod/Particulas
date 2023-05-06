@@ -1,38 +1,28 @@
 import math
 
-def distanciaEuclideana(x_1, y_1, x_2, y_2):
+def distanciaEuclidiana(x_1, y_1, x_2, y_2):
     return math.sqrt(math.pow((x_2 - x_1), 2) + math.pow((y_2 - y_1), 2))
 
-def puntosMasCercanos(puntos_list) -> list:
+def puntosMasCercanos(puntos_list)->list:
     resultado = []
 
-    for puntoI in puntos_list:
-        one_origenX = puntoI[0]
-        one_origenY = puntoI[1]
-        one_destinoX = puntoI[2]
-        one_destinoY = puntoI[3]
+    for punto_i in puntos_list:
+        one_origenX = punto_i[0]
+        one_origenY = punto_i[1]
 
         min = 1000
         cercano = (0,0)
 
-        for puntoJ in puntos_list:
-            if puntoI != puntoJ:
-                two_origenX = puntoJ[0]
-                two_origenY = puntoJ[1]
-                two_destinoX = puntoJ[2]
-                two_destinoY = puntoJ[3]
+        for punto_j in puntos_list:
+            if punto_i != punto_j:
+                two_origenX = punto_j[0]
+                two_origenY = punto_j[1]
 
-                origen = distanciaEuclideana(one_origenX, one_origenY, two_origenX, two_origenY)
-                destino = distanciaEuclideana(one_destinoX, one_destinoY, two_destinoX, two_destinoY)
+                o = distanciaEuclidiana(one_origenX, one_origenY, two_origenX, two_origenY)
 
-                if origen < min:
-                    min = origen
-                    cercano = (two_origenX, two_origenY, two_destinoX, two_destinoY)
-
-                if destino < min:
-                    min = destino
-                    cercano = (two_destinoX, two_destinoY, two_origenX, two_origenY)
-        
-        resultado.append((puntoI, cercano))
-    
+                if o < min:
+                    min = o
+                    cercano = (two_origenX, two_origenY)
+                
+        resultado.append((punto_i, cercano))
     return resultado
