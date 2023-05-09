@@ -38,7 +38,6 @@ def kruskalAlgorithm(edges, n):
 
     return MST
 
-
 def runKruskal(filepath):
     edges = []
 
