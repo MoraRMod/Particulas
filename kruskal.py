@@ -30,10 +30,10 @@ def kruskalAlgorithm(edges, n):
 
 	return MST
 
-def runKruskal(self):
+def runKruskal(filepath):
         edges = []
         
-        with open('particula.json') as f:
+        with open(filepath) as f:
             data = json.load(f)
             n = len(data)
             
