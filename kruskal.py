@@ -4,7 +4,7 @@ import json
 def kruskalAlgorithm(edges, n):
     # Almacena los bordes presentes en MST
     MST = []
-
+        
     # Crea un conjunto singleton para cada elemento del universo.
     ds = DisjointSet()
     ds.makeSet(n)
@@ -12,29 +12,26 @@ def kruskalAlgorithm(edges, n):
     index = 0
     # Ordena los bordes aumentando el peso
     edges.sort(key=lambda x: x[2])
-
+        
     # MST contiene exactamente aristas `V-1`
-    while len(MST) != n - 1:
+    while len(MST) != n - 1:    
         # Considerar el borde siguiente con peso mínimo del graph
         (src, dest, weight) = edges[index]
-        index = index + 1
+        index = index + 1        
         # Encontrar la raíz de los conjuntos a los que se unen dos extremos
         # vértices de la siguiente arista pertenecen
         x = ds.find(src)
-        y = ds.find(dest)
+        y = ds.find(dest)        
         # Si ambos extremos tienen diferentes padres, pertenecen a
         # diferentes componentes conectados y se pueden incluir en MST
         if x != y:
             MST.append((src, dest, weight))
             ds.union(x, y)
-
-        # Guardar el número de aristas para cada nodo en un archivo
-        aristasNodo = {}
-        for nodo in range(n):
-            aristas = [arista for arista in MST if nodo in arista[:2]]
-            aristasNodo[nodo] = len(aristas)
-        with open("aristasNodo.json", "w") as f:
-            json.dump(aristasNodo, f, indent=4)
+                        
+    # Guardar el archivo MST en el formato especificado
+    aristasNodo = [(m[0], m[1], int(m[2])) for m in MST]
+    with open("MST.json", "w") as f:
+        json.dump(aristasNodo, f)
 
     return MST
 
