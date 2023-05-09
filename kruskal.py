@@ -27,6 +27,14 @@ def kruskalAlgorithm(edges, n):
 		if x != y:
 			MST.append((src, dest, weight))
 			ds.union(x, y)
+                        
+		# Guardar el número de aristas para cada nodo en un archivo
+		aristasNodo = {}
+		for nodo in range(n):
+			aristas = [arista for arista in MST if nodo in arista[:2]]
+			aristasNodo[nodo] = len(aristas)
+		with open("aristasNodo.json", "w") as f:
+			json.dump(aristasNodo, f, indent = 4)
 
 	return MST
 
@@ -46,5 +54,6 @@ def runKruskal(filepath):
                     edges.append((i, j, distancia))    
         # grafo de construcción
         e = kruskalAlgorithm(edges, n)
+
 
         return e
