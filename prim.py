@@ -43,6 +43,5 @@ def calcularMSTDesdeNodo(nodo_inicio):
                     heapq.heappush(aristas, (peso, destino, vecino))
 
     # Imprimir resultado
-    print(f"Aristas del árbol generador mínimo desde el nodo {nodo_inicio}:")
     for origen, destino, peso in aristas_mst:
-        print(f"{origen} - {destino}: {peso}")
+    	return f" Aristas del árbol generador mínimo desde el nodo {nodo_inicio}:\n {origen} - {destino}: {peso}"
