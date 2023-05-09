@@ -5,7 +5,8 @@ from ui_mainwindow import Ui_MainWindow
 from cumulo import Cumulo
 from particula import Particula
 from algoritmos import puntosMasCercanos
-from kruskal import kruskalAlgorithm, runKruskal
+from kruskal import runKruskal
+from prim import calcularMSTDesdeNodo
 from pprint import pprint
 
 class MainWindow(QMainWindow):
@@ -44,6 +45,7 @@ class MainWindow(QMainWindow):
         self.ui.Grafo_PushButton.clicked.connect(self.mostrarGrafo)
 
         self.ui.Kruskal_PushButton.clicked.connect(self.kruskal)
+        self.ui.Prim_PushButton.clicked.connect(self.prim)
 
     @Slot()
     def agregarInicio(self):
@@ -322,6 +324,13 @@ class MainWindow(QMainWindow):
     @Slot()
     def kruskal(self):
         res = runKruskal('particulas.json')
+
+        self.ui.Contenido_PlainTextEdit.clear()
+        self.ui.Contenido_PlainTextEdit.insertPlainText(str(res))
+
+    @Slot()
+    def prim(self):
+        res = calcularMSTDesdeNodo((0, 283))
 
         self.ui.Contenido_PlainTextEdit.clear()
         self.ui.Contenido_PlainTextEdit.insertPlainText(str(res))
