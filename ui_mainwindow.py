@@ -233,6 +233,11 @@ class Ui_MainWindow(object):
 
         self.gridLayout_15.addWidget(self.Kruskal_PushButton, 0, 0, 1, 1)
 
+        self.Prim_PushButton = QPushButton(self.Algoritmos_GroupBox)
+        self.Prim_PushButton.setObjectName(u"Prim_PushButton")
+
+        self.gridLayout_15.addWidget(self.Prim_PushButton, 0, 1, 1, 1)
+
 
         self.gridLayout_13.addWidget(self.Algoritmos_GroupBox, 5, 0, 1, 3)
 
@@ -370,6 +375,7 @@ class Ui_MainWindow(object):
         self.Grafo_PushButton.setText(QCoreApplication.translate("MainWindow", u"Grafo", None))
         self.Algoritmos_GroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Algoritmos", None))
         self.Kruskal_PushButton.setText(QCoreApplication.translate("MainWindow", u"Kruskal", None))
+        self.Prim_PushButton.setText(QCoreApplication.translate("MainWindow", u"Prim", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.Agregar_Tab), QCoreApplication.translate("MainWindow", u"Agregar", None))
         self.MostrarTabla_PushButton.setText(QCoreApplication.translate("MainWindow", u"Mostrar", None))
         self.Buscar_LineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Identificador de Particula", None))
