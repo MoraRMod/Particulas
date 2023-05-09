@@ -5,6 +5,7 @@ from ui_mainwindow import Ui_MainWindow
 from cumulo import Cumulo
 from particula import Particula
 from algoritmos import puntosMasCercanos
+from kruskal import kruskalAlgorithm, runKruskal
 from pprint import pprint
 
 class MainWindow(QMainWindow):
@@ -41,6 +42,8 @@ class MainWindow(QMainWindow):
         self.ui.FuerzaBruta_PushButton.clicked.connect(self.fuerzaBruta)
 
         self.ui.Grafo_PushButton.clicked.connect(self.mostrarGrafo)
+
+        self.ui.Kruskal_PushButton.clicked.connect(self.kruskal)
 
     @Slot()
     def agregarInicio(self):
@@ -316,4 +319,9 @@ class MainWindow(QMainWindow):
         self.ui.Contenido_PlainTextEdit.clear()
         self.ui.Contenido_PlainTextEdit.insertPlainText(str(grafo))
 
-            
+    @Slot()
+    def kruskal(self):
+        res = runKruskal('particulas.json')
+
+        self.ui.Contenido_PlainTextEdit.clear()
+        self.ui.Contenido_PlainTextEdit.insertPlainText(str(res))
