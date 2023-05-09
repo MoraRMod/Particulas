@@ -3,7 +3,7 @@ import heapq
 
 def calcularMSTDesdeNodo(nodo_inicio):
     # Leer archivo JSON y crear lista de diccionarios
-    with open("grafo.json", "r") as f:
+    with open("particulas.json", "r") as f:
         grafo_json = json.load(f)
 
     # Crear grafo como un diccionario de listas de tuplas
