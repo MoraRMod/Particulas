@@ -6,7 +6,8 @@ from cumulo import Cumulo
 from particula import Particula
 from algoritmos import puntosMasCercanos
 from kruskal import runKruskal
-from prim import calcularMSTDesdeNodo
+from prim import prim
+from dijkstra import correrDijkstra
 from pprint import pprint
 
 class MainWindow(QMainWindow):
@@ -46,6 +47,7 @@ class MainWindow(QMainWindow):
 
         self.ui.Kruskal_PushButton.clicked.connect(self.kruskal)
         self.ui.Prim_PushButton.clicked.connect(self.prim)
+        self.ui.Dijkstra_PushButton.clicked.connect(self.dijkstra)
 
     @Slot()
     def agregarInicio(self):
@@ -323,14 +325,20 @@ class MainWindow(QMainWindow):
 
     @Slot()
     def kruskal(self):
-        res = runKruskal('particulas.json')
-
         self.ui.Contenido_PlainTextEdit.clear()
-        self.ui.Contenido_PlainTextEdit.insertPlainText(str(res))
+        results = runKruskal('particulas.json')
+
+        for result in results:
+            self.ui.Contenido_PlainTextEdit.insertPlainText(str(result) + '\n')
 
     @Slot()
     def prim(self):
-        res = calcularMSTDesdeNodo((0, 283))
-
         self.ui.Contenido_PlainTextEdit.clear()
-        self.ui.Contenido_PlainTextEdit.insertPlainText(str(res))
+        self.ui.Contenido_PlainTextEdit.insertPlainText(prim('particula.json'))
+
+    @Slot()
+    def dijkstra(self):
+        self.ui.Contenido_PlainTextEdit.clear()
+        results = correrDijkstra('particula.json')
+        for result in results:
+            self.ui.Contenido_PlainTextEdit.insertPlainText(str(result) + '\n')
