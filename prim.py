@@ -1,31 +1,29 @@
-import json
 import heapq
+import json
 
-def calcularMSTDesdeNodo(nodo_inicio):
-    # Leer archivo JSON y crear lista de diccionarios
-    with open("particulas.json", "r") as f:
-        grafo_json = json.load(f)
+def prim(filepath):
+    # Leer archivo JSON y crear grafo como un diccionario de listas de tuplas
+    with open(filepath, "r") as f:
+        data = json.load(f)
+        grafo = {}
+        for arista in data:
+            origen = arista["source"]
+            destino = arista["dest"]
+            peso = arista["weight"]
 
-    # Crear grafo como un diccionario de listas de tuplas
-    grafo = {}
-    for arista in grafo_json:
-        origen = (arista["origen"]["x"], arista["origen"]["y"])
-        destino = (arista["destino"]["x"], arista["destino"]["y"])
-        peso = arista["velocidad"]
+            if origen not in grafo:
+                grafo[origen] = []
 
-        if origen not in grafo:
-            grafo[origen] = []
+            if destino not in grafo:
+                grafo[destino] = []
 
-        if destino not in grafo:
-            grafo[destino] = []
-
-        grafo[origen].append((destino, peso))
-        grafo[destino].append((origen, peso))
+            grafo[origen].append((destino, peso))
+            grafo[destino].append((origen, peso))
 
     # Implementar algoritmo de Prim
-    aristas_mst = []
     visitados = set()
-    origen = nodo_inicio
+    origen = list(grafo.keys())[0]
+    destino = list(grafo.keys())[-1]
     visitados.add(origen)
     aristas = [(peso, origen, destino) for destino, peso in grafo[origen]]
 
@@ -36,12 +34,12 @@ def calcularMSTDesdeNodo(nodo_inicio):
 
         if destino not in visitados:
             visitados.add(destino)
-            aristas_mst.append((origen, destino, peso))
+
+            if destino == destino:
+                break
 
             for vecino, peso in grafo[destino]:
                 if vecino not in visitados:
                     heapq.heappush(aristas, (peso, destino, vecino))
 
-    # Imprimir resultado
-    for origen, destino, peso in aristas_mst:
-    	return f" Aristas del árbol generador mínimo desde el nodo {nodo_inicio}:\n {origen} - {destino}: {peso}"
+    return f"Árbol generador mínimo:\n({origen}, {destino}): {peso}"
