@@ -8,6 +8,7 @@ from algoritmos import puntosMasCercanos
 from kruskal import runKruskal
 from prim import prim
 from dijkstra import correrDijkstra
+from graham import coordenadas
 from pprint import pprint
 
 class MainWindow(QMainWindow):
@@ -48,6 +49,7 @@ class MainWindow(QMainWindow):
         self.ui.Kruskal_PushButton.clicked.connect(self.kruskal)
         self.ui.Prim_PushButton.clicked.connect(self.prim)
         self.ui.Dijkstra_PushButton.clicked.connect(self.dijkstra)
+        self.ui.Graham_PushButton.clicked.connect(self.graham)
 
     @Slot()
     def agregarInicio(self):
@@ -209,6 +211,7 @@ class MainWindow(QMainWindow):
     
     @Slot()
     def dibujarEscena(self):
+        self.scene.clear()
         pen = QPen()
         pen.setWidth(2)
 
@@ -255,6 +258,8 @@ class MainWindow(QMainWindow):
 
     @Slot()
     def dibujarPuntos(self):
+        self.scene.clear()
+
         pen = QPen()
         pen.setWidth(2)
 
@@ -340,5 +345,14 @@ class MainWindow(QMainWindow):
     def dijkstra(self):
         self.ui.Contenido_PlainTextEdit.clear()
         results = correrDijkstra('particula.json')
+
+        for result in results:
+            self.ui.Contenido_PlainTextEdit.insertPlainText(str(result) + '\n')
+    
+    @Slot()
+    def graham(self):
+        self.ui.Contenido_PlainTextEdit.clear()
+        results = coordenadas('particulas.json')
+
         for result in results:
             self.ui.Contenido_PlainTextEdit.insertPlainText(str(result) + '\n')
