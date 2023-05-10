@@ -228,20 +228,25 @@ class Ui_MainWindow(object):
         self.Algoritmos_GroupBox.setObjectName(u"Algoritmos_GroupBox")
         self.gridLayout_15 = QGridLayout(self.Algoritmos_GroupBox)
         self.gridLayout_15.setObjectName(u"gridLayout_15")
-        self.Kruskal_PushButton = QPushButton(self.Algoritmos_GroupBox)
-        self.Kruskal_PushButton.setObjectName(u"Kruskal_PushButton")
+        self.Dijkstra_PushButton = QPushButton(self.Algoritmos_GroupBox)
+        self.Dijkstra_PushButton.setObjectName(u"Dijkstra_PushButton")
 
-        self.gridLayout_15.addWidget(self.Kruskal_PushButton, 0, 0, 1, 1)
+        self.gridLayout_15.addWidget(self.Dijkstra_PushButton, 2, 0, 1, 1)
 
         self.Prim_PushButton = QPushButton(self.Algoritmos_GroupBox)
         self.Prim_PushButton.setObjectName(u"Prim_PushButton")
 
         self.gridLayout_15.addWidget(self.Prim_PushButton, 0, 1, 1, 1)
 
-        self.Dijkstra_PushButton = QPushButton(self.Algoritmos_GroupBox)
-        self.Dijkstra_PushButton.setObjectName(u"Dijkstra_PushButton")
+        self.Graham_PushButton = QPushButton(self.Algoritmos_GroupBox)
+        self.Graham_PushButton.setObjectName(u"Graham_PushButton")
 
-        self.gridLayout_15.addWidget(self.Dijkstra_PushButton, 0, 2, 1, 1)
+        self.gridLayout_15.addWidget(self.Graham_PushButton, 2, 1, 1, 1)
+
+        self.Kruskal_PushButton = QPushButton(self.Algoritmos_GroupBox)
+        self.Kruskal_PushButton.setObjectName(u"Kruskal_PushButton")
+
+        self.gridLayout_15.addWidget(self.Kruskal_PushButton, 0, 0, 1, 1)
 
 
         self.gridLayout_13.addWidget(self.Algoritmos_GroupBox, 5, 0, 1, 3)
@@ -379,9 +384,10 @@ class Ui_MainWindow(object):
         self.Mostrar_PushButon.setText(QCoreApplication.translate("MainWindow", u"Mostrar", None))
         self.Grafo_PushButton.setText(QCoreApplication.translate("MainWindow", u"Grafo", None))
         self.Algoritmos_GroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Algoritmos", None))
-        self.Kruskal_PushButton.setText(QCoreApplication.translate("MainWindow", u"Kruskal", None))
-        self.Prim_PushButton.setText(QCoreApplication.translate("MainWindow", u"Prim", None))
         self.Dijkstra_PushButton.setText(QCoreApplication.translate("MainWindow", u"Dijkstra", None))
+        self.Prim_PushButton.setText(QCoreApplication.translate("MainWindow", u"Prim", None))
+        self.Graham_PushButton.setText(QCoreApplication.translate("MainWindow", u"Graham", None))
+        self.Kruskal_PushButton.setText(QCoreApplication.translate("MainWindow", u"Kruskal", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.Agregar_Tab), QCoreApplication.translate("MainWindow", u"Agregar", None))
         self.MostrarTabla_PushButton.setText(QCoreApplication.translate("MainWindow", u"Mostrar", None))
         self.Buscar_LineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Identificador de Particula", None))
