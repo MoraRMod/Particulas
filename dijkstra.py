@@ -35,15 +35,14 @@ def caminoDijkstra(Grafo, source, n):
 		# marca el vértice "u" como hecho para que no se vuelva a recoger
 		done[u] = True
  
-	route = []
+	res = []
 	for i in range(n):
 		if i != source and dist[i] != sys.maxsize:
+			route = []
 			ruta(prev, i, route)
-			print(f'({source},{i}): {dist[i]}, {route}\n')
-			route.clear()
+			res.append(str(f"({source},{i}): {dist[i]}"))
 	
-	return dist, prev
- 
+	return res
  
 def correrDijkstra(filepath):
 	with open(filepath) as f:
@@ -56,6 +55,3 @@ def correrDijkstra(filepath):
 	digrafo = Grafo(edges, n)
 
 	return [caminoDijkstra(digrafo, source, n) for source in range(n)]
-
-    #for source in range(n):
-    #    caminoDijkstra(digrafo, source, n)
