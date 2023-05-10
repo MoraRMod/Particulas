@@ -1,16 +1,14 @@
 class Nodo:
-	def __init__(self, vertex, weight=0):
-		self.vertex = vertex
-		self.weight = weight
+	def __init__(self, vertice, peso = 0):
+		self.vertice = vertice
+		self.peso = peso
  
 	def __lt__(self, other):
-		return self.weight < other.weight
+		return self.peso < other.peso
  
 class Grafo:
-	def __init__(self, edges, n):
-		# Asigna memoria para la lista de adyacencia
+	def __init__(self, borde, n):
 		self.adjList = [[] for _ in range(n)]
  
-		# Agrega bordes al Grafo dirigido
-		for (source, dest, weight) in edges:
-			self.adjList[source].append((dest, weight))
+		for (source, dest, peso) in borde:
+			self.adjList[source].append((dest, peso))
