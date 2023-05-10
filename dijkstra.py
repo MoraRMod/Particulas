@@ -9,31 +9,25 @@ def ruta(prev, i, route):
         route.append(i)
 
 def caminoDijkstra(Grafo, source, n):
-	# Crea un min-heap y empuja el nodo de origen con una distancia de 0
 	pq = []
 	heappush(pq, Nodo(source))
-	# Establece la distancia inicial desde la fuente a "v" como infinito
 	dist = [sys.maxsize] * n
 	dist[source] = 0
-	# Lista para rastrear vértices para los cuales ya se encontró el costo mínimo
-	done = [False] * n
-	done[source] = True
-	# Almacena el predecesor de un vértice
+	completo = [False] * n
+	completo[source] = True
 	prev = [-1] * n
  
 	while pq:
 		nodo = heappop(pq)
 		u = nodo.vertex
+
+		for (i, peso) in Grafo.adjList[u]:
+			if not completo[i] and (dist[u] + peso) < dist[i]:
+				dist[i] = dist[u] + peso
+				prev[i] = u
+				heappush(pq, Nodo(i, dist[i]))
  
-		# hacer para cada vecino "v" de "u"
-		for (v, weight) in Grafo.adjList[u]:
-			if not done[v] and (dist[u] + weight) < dist[v]:
-				dist[v] = dist[u] + weight
-				prev[v] = u
-				heappush(pq, Nodo(v, dist[v]))
- 
-		# marca el vértice "u" como hecho para que no se vuelva a recoger
-		done[u] = True
+		completo[u] = True
  
 	res = []
 	for i in range(n):
@@ -44,11 +38,10 @@ def caminoDijkstra(Grafo, source, n):
 	
 	return res
  
-def correrDijkstra(filepath):
-	with open(filepath) as f:
+def correrDijkstra(archivo):
+	with open(archivo) as f:
 		data = json.load(f)
 
-	# Convertir la lista en una lista de tuplas con el mismo formato que la variable "edges"
 	edges = [(int(item['source']), int(item['dest']), int(item['weight'])) for item in data]
 
 	n = 30
