@@ -293,6 +293,13 @@
                    </property>
                   </widget>
                  </item>
+                 <item row="0" column="2">
+                  <widget class="QPushButton" name="Dijkstra_PushButton">
+                   <property name="text">
+                    <string>Dijkstra</string>
+                   </property>
+                  </widget>
+                 </item>
                 </layout>
                </widget>
               </item>
