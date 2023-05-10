@@ -10,7 +10,9 @@ def ruta(prev, i, route):
 
 def caminoDijkstra(Grafo, source, n):
 	pq = []
+
 	heappush(pq, Nodo(source))
+	
 	dist = [sys.maxsize] * n
 	dist[source] = 0
 	completo = [False] * n
@@ -19,12 +21,13 @@ def caminoDijkstra(Grafo, source, n):
  
 	while pq:
 		nodo = heappop(pq)
-		u = nodo.vertex
+		u = nodo.vertice
 
 		for (i, peso) in Grafo.adjList[u]:
 			if not completo[i] and (dist[u] + peso) < dist[i]:
 				dist[i] = dist[u] + peso
 				prev[i] = u
+
 				heappush(pq, Nodo(i, dist[i]))
  
 		completo[u] = True
@@ -33,6 +36,7 @@ def caminoDijkstra(Grafo, source, n):
 	for i in range(n):
 		if i != source and dist[i] != sys.maxsize:
 			route = []
+
 			ruta(prev, i, route)
 			res.append(str(f"({source},{i}): {dist[i]}"))
 	
