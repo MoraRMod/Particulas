@@ -27,12 +27,7 @@ def kruskalAlgorithm(edges, n):
         if x != y:
             MST.append((src, dest, weight))
             ds.union(x, y)
-    
-    # Guardar el archivo MST en el formato especificado
-    aristasNodo = [{"source": m[0], "dest": m[1], "weight": int(m[2])} for m in MST]
-    with open("MST.json", "w") as f:
-        json.dump(aristasNodo, f)
-
+            
     return MST
 
 def runKruskal(filepath):
