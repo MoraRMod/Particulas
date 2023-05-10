@@ -279,10 +279,10 @@
                  <string>Algoritmos</string>
                 </property>
                 <layout class="QGridLayout" name="gridLayout_15">
-                 <item row="0" column="0">
-                  <widget class="QPushButton" name="Kruskal_PushButton">
+                 <item row="2" column="0">
+                  <widget class="QPushButton" name="Dijkstra_PushButton">
                    <property name="text">
-                    <string>Kruskal</string>
+                    <string>Dijkstra</string>
                    </property>
                   </widget>
                  </item>
@@ -293,10 +293,17 @@
                    </property>
                   </widget>
                  </item>
-                 <item row="0" column="2">
-                  <widget class="QPushButton" name="Dijkstra_PushButton">
+                 <item row="2" column="1">
+                  <widget class="QPushButton" name="Graham_PushButton">
                    <property name="text">
-                    <string>Dijkstra</string>
+                    <string>Graham</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QPushButton" name="Kruskal_PushButton">
+                   <property name="text">
+                    <string>Kruskal</string>
                    </property>
                   </widget>
                  </item>
